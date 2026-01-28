@@ -1,52 +1,923 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jingyu Fu - Portfolio</title>
+
+    <!-- Varela Round 字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Varela Round', sans-serif;
+            background-color: #faf8f3;
+            color: #2c2c2c;
+        }
+
+        /* 左侧导航栏 */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #ffffff;
+            border-right: 3px solid #5eb3d6;
+            padding: 40px 20px;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar-logo {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .sidebar-logo h1 {
+            font-size: 1.8rem;
+            color: #5eb3d6;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-logo p {
+            font-size: 0.9rem;
+            color: #666666;
+        }
+
+        /* 导航菜单 */
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-bottom: 10px;
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: #666666;
+            text-decoration: none;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #5eb3d6;
+            background: #faf8f3;
+            border-left-color: #5eb3d6;
+        }
+
+        .nav-menu a.active {
+            color: #5eb3d6;
+            background: #faf8f3;
+            border-left-color: #ffb3d9;
+            font-weight: bold;
+        }
+
+        /* 社交链接 */
+        .social-links {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #faf8f3;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 12px;
+            color: #5eb3d6;
+            text-decoration: none;
+            border: 2px solid #5eb3d6;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #5eb3d6;
+            color: #ffffff;
+        }
+
+        /* 主内容区域 */
+        .main-content {
+            margin-left: 250px;
+            padding: 60px 80px;
+        }
+
+        /* 内容区块 */
+        .section {
             min-height: 100vh;
+            padding: 60px 0;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #ffb3d9;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #5eb3d6;
+            display: inline-block;
+        }
+
+        .section-content {
+            max-width: 1000px;
+        }
+
+        /* ==================== ABOUT ME SECTION ==================== */
+        .about-container {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+            margin-top: 40px;
+        }
+
+        /* 照片容器 - 长方形 */
+        .about-image {
+            flex-shrink: 0;
+            width: 300px;
+        }
+
+        .profile-image {
+            width: 100%;
+            max-width: 300px;
+            height: 400px;
+            border: 4px solid #5eb3d6;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #e0e0e0;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        
-        .container {
+            color: #999;
             text-align: center;
-            color: white;
-            padding: 40px;
+            padding: 20px;
         }
-        
-        h1 {
-            font-size: 3rem;
+
+        /* 📸 实际使用时替换这里 */
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* About 文字内容 */
+        .about-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            color: #5eb3d6;
             margin-bottom: 20px;
-            animation: fadeIn 1s ease-in;
         }
-        
-        p {
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #666666;
+            margin-bottom: 20px;
+        }
+
+        /* ==================== PROJECTS SECTION ==================== */
+        .projects-carousel {
+            margin-top: 40px;
+            position: relative;
+        }
+
+        /* 主图片展示区 */
+        .carousel-main {
+            position: relative;
+            width: 100%;
+            background: #ffffff;
+            border: 3px solid #5eb3d6;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .carousel-slides {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            position: relative;
+        }
+
+        /* 项目大图 */
+        .project-main-image {
+            width: 100%;
+            height: 350px;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            overflow: hidden;
+        }
+
+        /* 📸 实际使用时替换这里 */
+        .project-main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 项目信息 */
+        .project-main-info {
+            padding: 25px 30px;
+            background: #ffffff;
+        }
+
+        .project-main-info h3 {
+            font-size: 1.8rem;
+            color: #5eb3d6;
+            margin-bottom: 10px;
+        }
+
+        .project-main-info p {
+            font-size: 1.1rem;
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        /* 左右箭头 */
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #5eb3d6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            color: #5eb3d6;
+            user-select: none;
+        }
+
+        .carousel-arrow:hover {
+            background: #5eb3d6;
+            color: #ffffff;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-arrow.prev {
+            left: 20px;
+        }
+
+        .carousel-arrow.next {
+            right: 20px;
+        }
+
+        /* 缩略图导航 */
+        .carousel-thumbnails {
+            margin-top: 20px;
+            position: relative;
+            padding: 0 10px;
+        }
+
+        .thumbnails-container {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 10px 0;
+        }
+
+        /* 隐藏滚动条但保留功能 */
+        .thumbnails-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .thumbnails-container::-webkit-scrollbar-track {
+            background: #faf8f3;
+            border-radius: 4px;
+        }
+
+        .thumbnails-container::-webkit-scrollbar-thumb {
+            background: #5eb3d6;
+            border-radius: 4px;
+        }
+
+        .thumbnail-item {
+            flex-shrink: 0;
+            width: 150px;
+            height: 100px;
+            border: 3px solid transparent;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 5px;
+        }
+
+        /* 📸 实际使用时替换这里 */
+        .thumbnail-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .thumbnail-item:hover {
+            border-color: #ffb3d9;
+            transform: scale(1.05);
+        }
+
+        .thumbnail-item.active {
+            border-color: #5eb3d6;
+            box-shadow: 0 0 10px rgba(94, 179, 214, 0.5);
+        }
+
+        /* ==================== SKILLS SECTION ==================== */
+        .skills-container {
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            margin-bottom: 30px;
+        }
+
+        .skill-category h3 {
+            color: #5eb3d6;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill-item {
+            padding: 12px 24px;
+            background: #ffffff;
+            border: 2px solid #5eb3d6;
+            border-radius: 25px;
+            color: #2c2c2c;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: #5eb3d6;
+            color: #ffffff;
+        }
+
+        /* ==================== EXPERIENCE SECTION ==================== */
+        .experience-container {
+            margin-top: 30px;
+        }
+
+        .experience-item {
+            background: #ffffff;
+            border-left: 4px solid #5eb3d6;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+        }
+
+        .experience-item h3 {
+            color: #5eb3d6;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .experience-item .position {
+            color: #ffb3d9;
             font-size: 1.2rem;
-            opacity: 0.9;
+            margin-bottom: 10px;
         }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        .experience-item .duration {
+            color: #999;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .experience-item p {
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        /* ==================== CONTACT SECTION ==================== */
+        .contact-info {
+            margin-top: 30px;
+            padding: 40px;
+            background: #ffffff;
+            border: 2px solid #ffb3d9;
+            border-radius: 8px;
+        }
+
+        .contact-info h3 {
+            color: #ffb3d9;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: #666666;
+        }
+
+        .contact-item strong {
+            color: #5eb3d6;
+        }
+
+        /* 响应式设计 - 平板 */
+        @media (max-width: 1024px) {
+            .main-content {
+                padding: 40px 40px;
+            }
+
+            .about-container {
+                gap: 30px;
+            }
+
+            .about-image {
+                width: 250px;
+            }
+
+            .profile-image {
+                max-width: 250px;
+                height: 350px;
+            }
+        }
+
+        /* 响应式设计 - 手机端 */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 3px solid #5eb3d6;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 40px 20px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            /* About Me 手机端改为纵向布局 */
+            .about-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .about-image {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .profile-image {
+                max-width: 100%;
+                height: 400px;
+            }
+
+            /* Projects 手机端调整 */
+            .carousel-slides {
+                height: 450px;
+            }
+
+            .project-main-image {
+                height: 300px;
+            }
+
+            .carousel-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .carousel-arrow.prev {
+                left: 10px;
+            }
+
+            .carousel-arrow.next {
+                right: 10px;
+            }
+
+            .thumbnail-item {
+                width: 120px;
+                height: 80px;
+            }
+        }
+
+        /* 小屏手机 */
+        @media (max-width: 480px) {
+            .profile-image {
+                height: 350px;
+            }
+
+            .carousel-slides {
+                height: 400px;
+            }
+
+            .project-main-image {
+                height: 250px;
+            }
+
+            .thumbnail-item {
+                width: 100px;
+                height: 70px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>👋 Welcome</h1>
-        <p>This site is under construction</p>
+<!-- 左侧导航栏 -->
+<aside class="sidebar">
+    <div class="sidebar-logo">
+        <h1>Jingyu Fu</h1>
+        <p>Game Designer</p>
     </div>
+
+    <nav>
+        <ul class="nav-menu">
+            <li><a href="#about" class="active">About Me</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="social-links">
+        <a href="#">GitHub</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Email</a>
+    </div>
+</aside>
+
+<!-- 主内容区域 -->
+<main class="main-content">
+    <!-- ==================== ABOUT ME SECTION ==================== -->
+    <section id="about" class="section">
+        <h2 class="section-title">About Me</h2>
+        <div class="section-content">
+            <div class="about-container">
+                <!-- 📸 照片位置：替换这里 -->
+                <div class="about-image">
+                    <div class="profile-image">
+                        <!-- 方式1：直接使用img标签 -->
+                        <!-- <img src="images/profile/your-photo.jpg" alt="Jingyu Fu"> -->
+
+                        <!-- 方式2：暂时显示占位文字 -->
+                        <div>
+                            📸 Your Photo Here<br>
+                            300x400px<br>
+                            Long Rectangle<br><br>
+                            Replace with:<br>
+                            &lt;img src="images/profile/avatar.jpg"&gt;
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-text">
+                    <h2>Hello! I'm Jingyu Fu</h2>
+                    <p>Game designer specializing in systems design and player psychology, currently pursuing M.S.E. in Computer Graphics and Game Technology at University of Pennsylvania.</p>
+                    <p>With extensive experience across 6+ projects, skilled in iterative balancing, player-driven narratives, and level design using Unity, Godot and Unreal Engine.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROJECTS SECTION ==================== -->
+    <section id="projects" class="section">
+        <h2 class="section-title">Projects</h2>
+        <div class="section-content">
+            <div class="projects-carousel">
+                <!-- 主图片轮播 -->
+                <div class="carousel-main">
+                    <!-- 左箭头 -->
+                    <div class="carousel-arrow prev" onclick="changeSlide(-1)">‹</div>
+
+                    <!-- 幻灯片容器 -->
+                    <div class="carousel-slides">
+                        <!-- 项目 1 -->
+                        <div class="carousel-slide active">
+                            <div class="project-main-image">
+                                <!-- 📸 项目1大图：替换这里 -->
+                                <!-- <img src="images/projects/project1-main.jpg" alt="Project 1"> -->
+                                <div>📸 Project 1 Main Image<br>1000x350px</div>
+                            </div>
+                            <div class="project-main-info">
+                                <h3>Project Name 1</h3>
+                                <p>Detailed description of your first game development or graphics project. Explain the mechanics, your role, and key features.</p>
+                            </div>
+                        </div>
+
+                        <!-- 项目 2 -->
+                        <div class="carousel-slide">
+                            <div class="project-main-image">
+                                <!-- 📸 项目2大图：替换这里 -->
+                                <!-- <img src="images/projects/project2-main.jpg" alt="Project 2"> -->
+                                <div>📸 Project 2 Main Image<br>1000x350px</div>
+                            </div>
+                            <div class="project-main-info">
+                                <h3>Project Name 2</h3>
+                                <p>Detailed description of your second game development or graphics project. Explain the mechanics, your role, and key features.</p>
+                            </div>
+                        </div>
+
+                        <!-- 项目 3 -->
+                        <div class="carousel-slide">
+                            <div class="project-main-image">
+                                <!-- 📸 项目3大图：替换这里 -->
+                                <!-- <img src="images/projects/project3-main.jpg" alt="Project 3"> -->
+                                <div>📸 Project 3 Main Image<br>1000x350px</div>
+                            </div>
+                            <div class="project-main-info">
+                                <h3>Project Name 3</h3>
+                                <p>Detailed description of your third game development or graphics project. Explain the mechanics, your role, and key features.</p>
+                            </div>
+                        </div>
+
+                        <!-- 项目 4 -->
+                        <div class="carousel-slide">
+                            <div class="project-main-image">
+                                <!-- 📸 项目4大图：替换这里 -->
+                                <!-- <img src="images/projects/project4-main.jpg" alt="Project 4"> -->
+                                <div>📸 Project 4 Main Image<br>1000x350px</div>
+                            </div>
+                            <div class="project-main-info">
+                                <h3>Project Name 4</h3>
+                                <p>Detailed description of your fourth game development or graphics project. Explain the mechanics, your role, and key features.</p>
+                            </div>
+                        </div>
+
+                        <!-- 项目 5 -->
+                        <div class="carousel-slide">
+                            <div class="project-main-image">
+                                <!-- 📸 项目5大图：替换这里 -->
+                                <!-- <img src="images/projects/project5-main.jpg" alt="Project 5"> -->
+                                <div>📸 Project 5 Main Image<br>1000x350px</div>
+                            </div>
+                            <div class="project-main-info">
+                                <h3>Project Name 5</h3>
+                                <p>Detailed description of your fifth game development or graphics project. Explain the mechanics, your role, and key features.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右箭头 -->
+                    <div class="carousel-arrow next" onclick="changeSlide(1)">›</div>
+                </div>
+
+                <!-- 缩略图导航 -->
+                <div class="carousel-thumbnails">
+                    <div class="thumbnails-container">
+                        <!-- 📸 缩略图1：替换这里 -->
+                        <div class="thumbnail-item active" onclick="goToSlide(0)">
+                            <!-- <img src="images/projects/project1-thumb.jpg" alt="Project 1"> -->
+                            <div>Thumbnail 1<br>150x100px</div>
+                        </div>
+
+                        <!-- 📸 缩略图2：替换这里 -->
+                        <div class="thumbnail-item" onclick="goToSlide(1)">
+                            <!-- <img src="images/projects/project2-thumb.jpg" alt="Project 2"> -->
+                            <div>Thumbnail 2<br>150x100px</div>
+                        </div>
+
+                        <!-- 📸 缩略图3：替换这里 -->
+                        <div class="thumbnail-item" onclick="goToSlide(2)">
+                            <!-- <img src="images/projects/project3-thumb.jpg" alt="Project 3"> -->
+                            <div>Thumbnail 3<br>150x100px</div>
+                        </div>
+
+                        <!-- 📸 缩略图4：替换这里 -->
+                        <div class="thumbnail-item" onclick="goToSlide(3)">
+                            <!-- <img src="images/projects/project4-thumb.jpg" alt="Project 4"> -->
+                            <div>Thumbnail 4<br>150x100px</div>
+                        </div>
+
+                        <!-- 📸 缩略图5：替换这里 -->
+                        <div class="thumbnail-item" onclick="goToSlide(4)">
+                            <!-- <img src="images/projects/project5-thumb.jpg" alt="Project 5"> -->
+                            <div>Thumbnail 5<br>150x100px</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SKILLS SECTION ==================== -->
+    <section id="skills" class="section">
+        <h2 class="section-title">Skills</h2>
+        <div class="section-content">
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Game Engines</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Unity</span>
+                        <span class="skill-item">Unreal Engine</span>
+                        <span class="skill-item">Godot</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">C++</span>
+                        <span class="skill-item">C#</span>
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Graphics & Tools</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">OpenGL</span>
+                        <span class="skill-item">GLSL</span>
+                        <span class="skill-item">Maya</span>
+                        <span class="skill-item">Aseprite</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== EXPERIENCE SECTION ==================== -->
+    <section id="experience" class="section">
+        <h2 class="section-title">Experience</h2>
+        <div class="section-content">
+            <div class="experience-container">
+                <div class="experience-item">
+                    <h3>University of Pennsylvania</h3>
+                    <div class="position">M.S.E. in Computer Graphics and Game Technology</div>
+                    <div class="duration">2023 - Present</div>
+                    <p>Currently pursuing a Master's degree focused on game development, computer graphics, and interactive systems.</p>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Previous Experience / Education</h3>
+                    <div class="position">Position Title</div>
+                    <div class="duration">Year - Year</div>
+                    <p>Add your work experience, internships, or relevant educational background here.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section id="contact" class="section">
+        <h2 class="section-title">Contact</h2>
+        <div class="section-content">
+            <div class="contact-info">
+                <h3>Let's Connect!</h3>
+                <div class="contact-item">
+                    <strong>Email:</strong> your.email@example.com
+                </div>
+                <div class="contact-item">
+                    <strong>LinkedIn:</strong> linkedin.com/in/yourprofile
+                </div>
+                <div class="contact-item">
+                    <strong>GitHub:</strong> github.com/yourusername
+                </div>
+                <div class="contact-item">
+                    <strong>Portfolio:</strong> jingyufu.org
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    // ==================== 导航栏滚动高亮 ====================
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').slice(1) === current) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // ==================== 项目轮播功能 ====================
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const thumbnails = document.querySelectorAll('.thumbnail-item');
+
+    function showSlide(index) {
+        // 确保索引在有效范围内
+        if (index >= slides.length) {
+            currentSlide = 0;
+        } else if (index < 0) {
+            currentSlide = slides.length - 1;
+        } else {
+            currentSlide = index;
+        }
+
+        // 更新幻灯片显示
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        slides[currentSlide].classList.add('active');
+
+        // 更新缩略图高亮
+        thumbnails.forEach(thumb => {
+            thumb.classList.remove('active');
+        });
+        thumbnails[currentSlide].classList.add('active');
+
+        // 滚动缩略图到可见位置
+        thumbnails[currentSlide].scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'center'
+        });
+    }
+
+    // 左右箭头切换
+    function changeSlide(direction) {
+        showSlide(currentSlide + direction);
+    }
+
+    // 点击缩略图跳转
+    function goToSlide(index) {
+        showSlide(index);
+    }
+
+    // 键盘控制（可选）
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            changeSlide(-1);
+        } else if (e.key === 'ArrowRight') {
+            changeSlide(1);
+        }
+    });
+</script>
 </body>
 </html>
