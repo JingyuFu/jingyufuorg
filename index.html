@@ -270,11 +270,13 @@
             transition: opacity 0.5s ease;
             display: flex;
             flex-direction: column;
+            pointer-events: none;  /* 禁止隐藏的slide接收点击 */
         }
 
         .carousel-slide.active {
             opacity: 1;
             position: relative;
+            pointer-events: auto;  /* 允许当前slide接收点击 */
         }
 
         /* 项目大图 */
@@ -836,6 +838,7 @@
         <a href="https://www.linkedin.com/in/fujingyu/">LinkedIn</a>
         <a href="/cdn-cgi/l/email-protection#5d3734333a24283b281d2e383c2e73282d38333373383928">Email</a>
         <a href="https://steamcommunity.com/profiles/76561198313678147/">Steam</a>
+        <a href="https://www.linkedin.com/in/fujingyu/">LinkedIn</a>
         <a href="#">Bilbili</a>
         <a href="#">Discord</a>
     </div>
@@ -912,7 +915,7 @@
                             <div class="project-main-info">
                                 <h3>Rogue-Lite RPG</h3>
                                 <p>Insomnia's Toll: A 3D rogue-lite game featuring multiple weapons, skill tree, and death-reset mechanics.</p>
-                                <p>Game poster & Features available: <a href="https://drive.google.com/drive/folders/1oPt4qeuMdpLlX3uhP0kuMhfwmP3pMQua?usp=sharing" target="_blank">Link</a> </p>
+                                <p>Game poster & Features available:<a href="https://drive.google.com/drive/folders/1oPt4qeuMdpLlX3uhP0kuMhfwmP3pMQua?usp=sharing" target="_blank">Link</a></p>
                             </div>
                         </div>
 
