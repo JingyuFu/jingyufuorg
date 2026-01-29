@@ -594,6 +594,200 @@
                 height: 70px;
             }
         }
+
+        /* ==================== STEAM 专属样式 ==================== */
+        #steam .section-content {
+            max-width: 1400px !important;
+        }
+
+        .steam-profile-header {
+            background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            border: 2px solid #66c0f4;
+        }
+
+        .steam-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            border: 3px solid #66c0f4;
+            flex-shrink: 0;
+        }
+
+        .steam-profile-info {
+            flex: 1;
+            color: #c7d5e0;
+        }
+
+        .steam-nickname {
+            font-size: 2.5rem;
+            color: #66c0f4;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .steam-level {
+            display: inline-block;
+            background: #66c0f4;
+            color: #1b2838;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .steam-status {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #8f98a0;
+        }
+
+        .steam-status.online { color: #57cbde; }
+        .steam-status.ingame { color: #90ba3c; }
+
+        .steam-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .steam-stat-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 4px;
+        }
+
+        .steam-stat-number {
+            font-size: 1.8rem;
+            color: #66c0f4;
+            font-weight: bold;
+        }
+
+        .steam-stat-label {
+            font-size: 0.9rem;
+            color: #8f98a0;
+            margin-top: 5px;
+        }
+
+        .steam-tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #2a475e;
+        }
+
+        .steam-tab {
+            padding: 15px 30px;
+            background: transparent;
+            border: none;
+            color: #8f98a0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            font-family: 'Varela Round', sans-serif;
+        }
+
+        .steam-tab:hover { color: #66c0f4; }
+        .steam-tab.active {
+            color: #66c0f4;
+            border-bottom-color: #66c0f4;
+        }
+
+        .steam-games-container {
+            max-height: 800px;
+            overflow-y: auto;
+            padding: 20px;
+            background: #16202d;
+            border-radius: 8px;
+        }
+
+        .steam-games-container::-webkit-scrollbar { width: 12px; }
+        .steam-games-container::-webkit-scrollbar-track {
+            background: #1b2838;
+            border-radius: 6px;
+        }
+        .steam-games-container::-webkit-scrollbar-thumb {
+            background: #66c0f4;
+            border-radius: 6px;
+        }
+
+        .steam-games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .steam-game-card {
+            background: #1b2838;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .steam-game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(102, 192, 244, 0.3);
+            border-color: #66c0f4;
+        }
+
+        .steam-game-header {
+            width: 100%;
+            height: 130px;
+            background: #2a475e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .steam-game-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .steam-game-info { padding: 15px; }
+
+        .steam-game-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #c7d5e0;
+            margin-bottom: 8px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .steam-game-hours {
+            font-size: 1.1rem;
+            color: #66c0f4;
+            font-weight: 600;
+        }
+
+        .steam-game-extra {
+            font-size: 0.9rem;
+            color: #8f98a0;
+            margin-top: 5px;
+        }
+
+        .steam-loading {
+            text-align: center;
+            padding: 40px;
+            color: #66c0f4;
+            font-size: 1.2rem;
+        }
+
     </style>
 </head>
 <body>
@@ -1227,3 +1421,215 @@
         }
     });
 </script>
+<!-- ==================== STEAM API 代码（可用版本） ==================== -->
+<script>
+    (function() {
+        // Steam 配置
+        const STEAM_API_KEY = 'DAEE69AD10C58AB1591E5FBD0ADBE52C';
+        const STEAM_ID = '76561198313678147';
+        const CORS_PROXY = 'https://corsproxy.io/?';
+
+        // 全局数据
+        window.steamData = {
+            profile: null,
+            level: 0,
+            allGames: [],
+            recentGames: [],
+            currentTab: 'most-played'
+        };
+
+        // 工具函数
+        function minutesToHours(minutes) {
+            return Math.round(minutes / 60).toLocaleString();
+        }
+
+        function getLastPlayedText(timestamp) {
+            const now = Math.floor(Date.now() / 1000);
+            const diffDays = Math.floor((now - timestamp) / (60 * 60 * 24));
+            if (diffDays === 0) return 'Today';
+            if (diffDays === 1) return '1 day ago';
+            if (diffDays < 7) return `${diffDays} days ago`;
+            return `${Math.floor(diffDays / 30)} months ago`;
+        }
+
+        function getOnlineStatus(state) {
+            const states = {0: 'Offline', 1: 'Online', 2: 'Busy', 3: 'Away'};
+            return states[state] || 'Unknown';
+        }
+
+        // API调用（顺序加载）
+        async function fetchWithDelay(url, name) {
+            await new Promise(r => setTimeout(r, 800));
+            console.log(`Fetching ${name}...`);
+            const response = await fetch(CORS_PROXY + url);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return await response.json();
+        }
+
+        async function loadSteamData() {
+            try {
+                console.log('🎮 Loading Steam data...');
+
+                // 1. Profile
+                const profileData = await fetchWithDelay(
+                    `https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${STEAM_API_KEY}&steamids=${STEAM_ID}`,
+                    'Profile'
+                );
+                window.steamData.profile = profileData.response?.players?.[0];
+
+                // 2. Level
+                const levelData = await fetchWithDelay(
+                    `https://api.steampowered.com/IPlayerService/GetSteamLevel/v1/?key=${STEAM_API_KEY}&steamid=${STEAM_ID}`,
+                    'Level'
+                );
+                window.steamData.level = levelData.response?.player_level || 0;
+
+                // 3. Games
+                const gamesData = await fetchWithDelay(
+                    `https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${STEAM_API_KEY}&steamid=${STEAM_ID}&include_appinfo=true&format=json`,
+                    'Games'
+                );
+                window.steamData.allGames = gamesData.response?.games || [];
+
+                // 4. Recent Games
+                const recentData = await fetchWithDelay(
+                    `https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${STEAM_API_KEY}&steamid=${STEAM_ID}&count=50&format=json`,
+                    'Recent Games'
+                );
+                window.steamData.recentGames = recentData.response?.games || [];
+
+                console.log(`✅ Loaded ${window.steamData.allGames.length} games`);
+
+                // 渲染
+                renderSteamProfile();
+                renderSteamGames('most-played');
+
+            } catch (error) {
+                console.error('❌ Steam API Error:', error);
+                const profileContainer = document.getElementById('steam-profile-container');
+                const gamesContainer = document.getElementById('steam-games-grid');
+                if (profileContainer) {
+                    profileContainer.innerHTML = '<div class="steam-loading" style="color: #ff6b6b;">Failed to load Steam data</div>';
+                }
+                if (gamesContainer) {
+                    gamesContainer.innerHTML = '<div class="steam-loading" style="color: #ff6b6b;">Check console for errors</div>';
+                }
+            }
+        }
+
+        // 渲染个人信息
+        function renderSteamProfile() {
+            const container = document.getElementById('steam-profile-container');
+            if (!container) return;
+
+            const profile = window.steamData.profile;
+            if (!profile) {
+                container.innerHTML = '<div class="steam-loading" style="color: #ff6b6b;">Profile not loaded</div>';
+                return;
+            }
+
+            const totalMinutes = window.steamData.allGames.reduce((sum, g) => sum + (g.playtime_forever || 0), 0);
+            const totalHours = minutesToHours(totalMinutes);
+            const status = getOnlineStatus(profile.personastate);
+            const statusClass = profile.personastate === 1 ? 'online' : '';
+
+            container.innerHTML = `
+            <div class="steam-profile-header">
+                <img src="${profile.avatarfull}" alt="${profile.personaname}" class="steam-avatar">
+                <div class="steam-profile-info">
+                    <div class="steam-nickname">${profile.personaname}</div>
+                    <div class="steam-level">Level ${window.steamData.level}</div>
+                    <div class="steam-status ${statusClass}">
+                        ${status}${profile.gameextrainfo ? ` - Playing ${profile.gameextrainfo}` : ''}
+                    </div>
+                    <div class="steam-stats">
+                        <div class="steam-stat-item">
+                            <div class="steam-stat-number">${window.steamData.allGames.length}</div>
+                            <div class="steam-stat-label">Games Owned</div>
+                        </div>
+                        <div class="steam-stat-item">
+                            <div class="steam-stat-number">${totalHours}</div>
+                            <div class="steam-stat-label">Total Hours</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        }
+
+        // 创建游戏卡片
+        function createGameCard(game, showExtra = false) {
+            const hours = minutesToHours(game.playtime_forever);
+            const imageUrl = `https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/header.jpg`;
+
+            let extraInfo = '';
+            if (showExtra && game.rtime_last_played) {
+                const lastPlayed = getLastPlayedText(game.rtime_last_played);
+                extraInfo = `<div class="steam-game-extra">Last: ${lastPlayed}</div>`;
+            }
+
+            return `
+            <div class="steam-game-card" onclick="window.open('https://store.steampowered.com/app/${game.appid}', '_blank')">
+                <div class="steam-game-header">
+                    <img src="${imageUrl}" alt="${game.name}"
+                         onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'color:#66c0f4;\\'>No Image</div>';">
+                </div>
+                <div class="steam-game-info">
+                    <div class="steam-game-title">${game.name}</div>
+                    <div class="steam-game-hours">${hours} hours</div>
+                    ${extraInfo}
+                </div>
+            </div>
+        `;
+        }
+
+        // 渲染游戏列表
+        function renderSteamGames(tabName) {
+            const container = document.getElementById('steam-games-grid');
+            if (!container) return;
+
+            let games = [];
+            let showExtra = false;
+
+            if (tabName === 'most-played') {
+                games = [...window.steamData.allGames].sort((a, b) => b.playtime_forever - a.playtime_forever);
+            } else if (tabName === 'recent') {
+                games = window.steamData.recentGames;
+                showExtra = true;
+            } else if (tabName === 'name') {
+                games = [...window.steamData.allGames].sort((a, b) => a.name.localeCompare(b.name));
+            }
+
+            if (games.length === 0) {
+                container.innerHTML = '<div class="steam-loading">No games found</div>';
+                return;
+            }
+
+            container.innerHTML = games.map(g => createGameCard(g, showExtra)).join('');
+        }
+
+        // 全局函数 - 标签切换
+        window.switchSteamTab = function(tabName) {
+            console.log('Switching to:', tabName);
+            window.steamData.currentTab = tabName;
+
+            document.querySelectorAll('.steam-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`[data-tab="${tabName}"]`)?.classList.add('active');
+
+            renderSteamGames(tabName);
+        };
+
+        // 初始化
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                setTimeout(loadSteamData, 1000);
+            });
+        } else {
+            setTimeout(loadSteamData, 1000);
+        }
+    })();
+</script>
+</body>
+</html>
