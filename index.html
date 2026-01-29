@@ -199,6 +199,21 @@
             margin-bottom: 20px;
         }
 
+
+        /* 子标题样式 */
+        .subsection-title {
+            font-size: 1.8rem;
+            color: #5eb3d6;
+            margin: 50px 0 30px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ffb3d9;
+            display: inline-block;
+        }
+
+        .subsection-title:first-child {
+            margin-top: 0;
+        }
+
         /* ==================== PROJECTS SECTION ==================== */
         .projects-carousel {
             margin-top: 40px;
@@ -214,11 +229,11 @@
             border-radius: 8px;
             overflow: hidden;
         }
-
+        /*轮播尺寸*/
         .carousel-slides {
             position: relative;
             width: 100%;
-            height: 500px;
+            height: 750px;
             overflow: hidden;
         }
 
@@ -242,7 +257,7 @@
         /* 项目大图 */
         .project-main-image {
             width: 100%;
-            height: 350px;
+            height: 600px;
             background: #e0e0e0;
             display: flex;
             align-items: center;
@@ -491,7 +506,7 @@
 
             .profile-image {
                 max-width: 250px;
-                height: 350px;
+                height: 500px;
             }
         }
 
@@ -531,7 +546,7 @@
                 height: 400px;
             }
 
-            /* Projects 手机端调整 */
+            /* Projects 手机端调整*/
             .carousel-slides {
                 height: 450px;
             }
@@ -563,7 +578,7 @@
         /* 小屏手机 */
         @media (max-width: 480px) {
             .profile-image {
-                height: 350px;
+                height: 500px;
             }
 
             .carousel-slides {
@@ -571,7 +586,7 @@
             }
 
             .project-main-image {
-                height: 250px;
+                height: 500px;
             }
 
             .thumbnail-item {
@@ -579,6 +594,217 @@
                 height: 70px;
             }
         }
+
+
+        /* Steam 专属样式 */
+        #steam .section-content {
+            max-width: 100% !important;
+        }
+
+        .steam-profile-header {
+            background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            border: 2px solid #66c0f4;
+        }
+
+        .steam-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            border: 3px solid #66c0f4;
+            flex-shrink: 0;
+        }
+
+        .steam-profile-info {
+            flex: 1;
+            color: #c7d5e0;
+        }
+
+        .steam-nickname {
+            font-size: 2.5rem;
+            color: #66c0f4;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .steam-level {
+            display: inline-block;
+            background: #66c0f4;
+            color: #1b2838;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .steam-status {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .steam-status.online {
+            color: #57cbde;
+        }
+
+        .steam-status.ingame {
+            color: #90ba3c;
+        }
+
+        .steam-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .steam-stat-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 4px;
+        }
+
+        .steam-stat-number {
+            font-size: 1.8rem;
+            color: #66c0f4;
+            font-weight: bold;
+        }
+
+        .steam-stat-label {
+            font-size: 0.9rem;
+            color: #8f98a0;
+            margin-top: 5px;
+        }
+
+        /* Steam 游戏库标签 */
+        .steam-tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #2a475e;
+        }
+
+        .steam-tab {
+            padding: 15px 30px;
+            background: transparent;
+            border: none;
+            color: #8f98a0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            font-family: 'Varela Round', sans-serif;
+        }
+
+        .steam-tab:hover {
+            color: #66c0f4;
+        }
+
+        .steam-tab.active {
+            color: #66c0f4;
+            border-bottom-color: #66c0f4;
+        }
+
+        /* Steam 游戏网格 */
+        .steam-games-container {
+            max-height: 800px;
+            overflow-y: auto;
+            padding: 20px;
+            background: #16202d;
+            border-radius: 8px;
+        }
+
+        .steam-games-container::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .steam-games-container::-webkit-scrollbar-track {
+            background: #1b2838;
+            border-radius: 6px;
+        }
+
+        .steam-games-container::-webkit-scrollbar-thumb {
+            background: #66c0f4;
+            border-radius: 6px;
+        }
+
+        .steam-games-container::-webkit-scrollbar-thumb:hover {
+            background: #57cbde;
+        }
+
+        .steam-games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .steam-game-card {
+            background: #1b2838;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .steam-game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(102, 192, 244, 0.3);
+            border-color: #66c0f4;
+        }
+
+        .steam-game-header {
+            width: 100%;
+            height: 130px;
+            background: #2a475e;
+            overflow: hidden;
+        }
+
+        .steam-game-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .steam-game-info {
+            padding: 15px;
+        }
+
+        .steam-game-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #c7d5e0;
+            margin-bottom: 8px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .steam-game-hours {
+            font-size: 1.1rem;
+            color: #66c0f4;
+            font-weight: 600;
+        }
+
+        .steam-game-extra {
+            font-size: 0.9rem;
+            color: #8f98a0;
+            margin-top: 5px;
+        }
+
+        .steam-loading {
+            text-align: center;
+            padding: 40px;
+            color: #66c0f4;
+            font-size: 1.2rem;
+        }
+
     </style>
 </head>
 <body>
@@ -602,7 +828,7 @@
     <div class="social-links">
         <a href="https://github.com/JingyuFu">GitHub</a>
         <a href="https://www.linkedin.com/in/fujingyu/">LinkedIn</a>
-        <a href="mailto:jingyufu@seas.upenn.edu">Email</a>
+        <a href="/cdn-cgi/l/email-protection#5d3734333a24283b281d2e383c2e73282d38333373383928">Email</a>
         <a href="#">Steam</a>
         <a href="#">Bilbili</a>
     </div>
@@ -622,13 +848,13 @@
                         <img src="images/profile/avatar.jpg" alt="Jingyu Fu">
 
                         <!-- 方式2：暂时显示占位文字 -->
-<!--                        <div>-->
-<!--                            📸 Your Photo Here<br>-->
-<!--                            300x400px<br>-->
-<!--                            Long Rectangle<br><br>-->
-<!--                            Replace with:<br>-->
-<!--                            &lt;img src="images/profile/avatar.jpg"&gt;-->
-<!--                        </div>-->
+                        <!--                        <div>-->
+                        <!--                            📸 Your Photo Here<br>-->
+                        <!--                            300x400px<br>-->
+                        <!--                            Long Rectangle<br><br>-->
+                        <!--                            Replace with:<br>-->
+                        <!--                            &lt;img src="images/profile/avatar.jpg"&gt;-->
+                        <!--                        </div>-->
                     </div>
                 </div>
 
@@ -645,20 +871,18 @@
     <section id="projects" class="section">
         <h2 class="section-title">Projects</h2>
         <div class="section-content">
-            <div class="projects-carousel">
-                <!-- 主图片轮播 -->
-                <div class="carousel-main">
-                    <!-- 左箭头 -->
-                    <div class="carousel-arrow prev" onclick="changeSlide(-1)">‹</div>
 
-                    <!-- 幻灯片容器 -->
-                    <div class="carousel-slides">
+            <!-- ========== Game Dev/Design 子部分 ========== -->
+            <h3 class="subsection-title">Game Dev & Design</h3>
+            <div class="projects-carousel">
+                <div class="carousel-main">
+                    <div class="carousel-arrow prev" onclick="changeGameDevSlide(-1)">‹</div>
+
+                    <div class="carousel-slides" id="gamedev-slides">
                         <!-- 项目 1 -->
                         <div class="carousel-slide active">
                             <div class="project-main-image">
-                                <!-- 📸 项目1大图：替换这里 -->
-                                <img src="images/projects/rougelite.gif" alt="Project 1">
-<!--                                <div>📸 Project 1 Main Image<br>1000x350px</div>-->
+                                <img src="images/projects/rougelite.gif" alt="Rogue-Lite RPG">
                             </div>
                             <div class="project-main-info">
                                 <h3>Rogue-Lite RPG</h3>
@@ -669,9 +893,7 @@
                         <!-- 项目 2 -->
                         <div class="carousel-slide">
                             <div class="project-main-image">
-                                <!-- 📸 项目2大图：替换这里 -->
-                                <img src="images/projects/mario.gif" alt="Project 2">
-<!--                                <div>📸 Project 2 Main Image<br>1000x350px</div>-->
+                                <img src="images/projects/mario.gif" alt="SMB remake">
                             </div>
                             <div class="project-main-info">
                                 <h3>SMB remake</h3>
@@ -682,9 +904,7 @@
                         <!-- 项目 3 -->
                         <div class="carousel-slide">
                             <div class="project-main-image">
-                                <!-- 📸 项目3大图：替换这里 -->
-                                <img src="images/projects/3dmetriodvania.gif" alt="Project 3">
-<!--                                <div>📸 Project 3 Main Image<br>1000x350px</div>-->
+                                <img src="images/projects/3dmetriodvania.gif" alt="3D Metroidvania">
                             </div>
                             <div class="project-main-info">
                                 <h3>3D Metroidvania</h3>
@@ -695,9 +915,7 @@
                         <!-- 项目 4 -->
                         <div class="carousel-slide">
                             <div class="project-main-image">
-                                <!-- 📸 项目4大图：替换这里 -->
-                                <img src="images/projects/2dsim.gif" alt="Project 4">
-<!--                                <div>📸 Project 4 Main Image<br>1000x350px</div>-->
+                                <img src="images/projects/2dsim.gif" alt="2D Pixel-Style Simulation">
                             </div>
                             <div class="project-main-info">
                                 <h3>2D Pixel-Style Simulation</h3>
@@ -708,9 +926,7 @@
                         <!-- 项目 5 -->
                         <div class="carousel-slide">
                             <div class="project-main-image">
-                                <!-- 📸 项目5大图：替换这里 -->
-                                <img src="images/projects/MiniMC.gif" alt="Project 5">
-<!--                                <div>📸 Project 5 Main Image<br>1000x350px</div>-->
+                                <img src="images/projects/MiniMC.gif" alt="Mini Minecraft">
                             </div>
                             <div class="project-main-info">
                                 <h3>Mini Minecraft</h3>
@@ -719,41 +935,163 @@
                         </div>
                     </div>
 
-                    <!-- 右箭头 -->
-                    <div class="carousel-arrow next" onclick="changeSlide(1)">›</div>
+                    <div class="carousel-arrow next" onclick="changeGameDevSlide(1)">›</div>
                 </div>
 
-                <!-- 缩略图导航 -->
                 <div class="carousel-thumbnails">
-                    <div class="thumbnails-container">
-                        <!-- 📸 缩略图1：替换这里 -->
-                        <div class="thumbnail-item active" onclick="goToSlide(0)">
+                    <div class="thumbnails-container" id="gamedev-thumbnails">
+                        <div class="thumbnail-item active" onclick="goToGameDevSlide(0)">
                             <img src="images/projects/thumnail3d.gif" alt="Project 1">
-<!--                            <div>Thumbnail 1<br>150x100px</div>-->
                         </div>
-
-                        <!-- 📸 缩略图2：替换这里 -->
-                        <div class="thumbnail-item" onclick="goToSlide(1)">
+                        <div class="thumbnail-item" onclick="goToGameDevSlide(1)">
                             <img src="images/projects/thumbnailsmb.png" alt="Project 2">
-<!--                            <div>Thumbnail 2<br>150x100px</div>-->
                         </div>
-
-                        <!-- 📸 缩略图3：替换这里 -->
-                        <div class="thumbnail-item" onclick="goToSlide(2)">
+                        <div class="thumbnail-item" onclick="goToGameDevSlide(2)">
                             <img src="images/projects/thumbnailmtdvna.png" alt="Project 3">
-<!--                            <div>Thumbnail 3<br>150x100px</div>-->
                         </div>
-
-                        <!-- 📸 缩略图4：替换这里 -->
-                        <div class="thumbnail-item" onclick="goToSlide(3)">
+                        <div class="thumbnail-item" onclick="goToGameDevSlide(3)">
                             <img src="images/projects/thumbnailsimulation.png" alt="Project 4">
-<!--                            <div>Thumbnail 4<br>150x100px</div>-->
+                        </div>
+                        <div class="thumbnail-item" onclick="goToGameDevSlide(4)">
+                            <img src="images/projects/thumbunailmc.png" alt="Project 5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== Animation 子部分 ========== -->
+            <h3 class="subsection-title">Animation</h3>
+            <div class="projects-carousel">
+                <div class="carousel-main">
+                    <div class="carousel-arrow prev" onclick="changeAnimationSlide(-1)">‹</div>
+
+                    <div class="carousel-slides" id="animation-slides">
+                        <!-- 动画作品 1 -->
+                        <div class="carousel-slide active">
+                            <div class="project-main-image">
+                                <!-- 📸 动画作品1：替换这里 -->
+                                <!-- <img src="images/animation/animation1-main.gif" alt="Animation 1"> -->
+                                <div>📸 Animation Work 1<br>1000x500px</div>
+                            </div>
+                            <div class="project-main-info">
+                                <h3>Animation Title 1</h3>
+                                <p>Description of your Technical Artist work. Explain the animation techniques, tools used, and visual effects.</p>
+                            </div>
                         </div>
 
-                        <!-- 📸 缩略图5：替换这里 -->
-                        <div class="thumbnail-item" onclick="goToSlide(4)">
-                            <img src="images/projects/thumbunailmc.png" alt="Project 5">
-<!--                            <div>Thumbnail 5<br>150x100px</div>-->
+                        <!-- 动画作品 2 -->
+                        <div class="carousel-slide">
+                            <div class="project-main-image">
+                                <!-- 📸 动画作品2：替换这里 -->
+                                <!-- <img src="images/animation/animation2-main.gif" alt="Animation 2"> -->
+                                <div>📸 Animation Work 2<br>1000x500px</div>
+                            </div>
+                            <div class="project-main-info">
+                                <h3>Animation Title 2</h3>
+                                <p>Description of your Technical Artist work. Explain the animation techniques, tools used, and visual effects.</p>
+                            </div>
+                        </div>
+
+                        <!-- 动画作品 3 -->
+                        <div class="carousel-slide">
+                            <div class="project-main-image">
+                                <!-- 📸 动画作品3：替换这里 -->
+                                <!-- <img src="images/animation/animation3-main.gif" alt="Animation 3"> -->
+                                <div>📸 Animation Work 3<br>1000x500px</div>
+                            </div>
+                            <div class="project-main-info">
+                                <h3>Animation Title 3</h3>
+                                <p>Description of your Technical Artist work. Explain the animation techniques, tools used, and visual effects.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-arrow next" onclick="changeAnimationSlide(1)">›</div>
+                </div>
+
+                <div class="carousel-thumbnails">
+                    <div class="thumbnails-container" id="animation-thumbnails">
+                        <div class="thumbnail-item active" onclick="goToAnimationSlide(0)">
+                            <!-- 📸 动画缩略图1 -->
+                            <!-- <img src="images/animation/animation1-thumb.jpg" alt="Animation 1"> -->
+                            <div>Animation 1<br>150x100px</div>
+                        </div>
+                        <div class="thumbnail-item" onclick="goToAnimationSlide(1)">
+                            <!-- 📸 动画缩略图2 -->
+                            <div>Animation 2<br>150x100px</div>
+                        </div>
+                        <div class="thumbnail-item" onclick="goToAnimationSlide(2)">
+                            <!-- 📸 动画缩略图3 -->
+                            <div>Animation 3<br>150x100px</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== Art 子部分 ========== -->
+            <h3 class="subsection-title">Art</h3>
+            <div class="projects-carousel">
+                <div class="carousel-main">
+                    <div class="carousel-arrow prev" onclick="changeArtSlide(-1)">‹</div>
+
+                    <div class="carousel-slides" id="art-slides">
+                        <!-- 艺术作品 1 -->
+                        <div class="carousel-slide active">
+                            <div class="project-main-image">
+                                <!-- 📸 艺术作品1：替换这里 -->
+                                <!-- <img src="images/art/art1-main.jpg" alt="Art 1"> -->
+                                <div>📸 Artwork 1<br>1000x500px<br>2D/3D Art</div>
+                            </div>
+                            <div class="project-main-info">
+                                <h3>Artwork Title 1</h3>
+                                <p>Description of your art piece. Explain the concept, techniques used, and creative process.</p>
+                            </div>
+                        </div>
+
+                        <!-- 艺术作品 2 -->
+                        <div class="carousel-slide">
+                            <div class="project-main-image">
+                                <!-- 📸 艺术作品2：替换这里 -->
+                                <!-- <img src="images/art/art2-main.jpg" alt="Art 2"> -->
+                                <div>📸 Artwork 2<br>1000x500px<br>Character Design</div>
+                            </div>
+                            <div class="project-main-info">
+                                <h3>Artwork Title 2</h3>
+                                <p>Description of your art piece. Explain the concept, techniques used, and creative process.</p>
+                            </div>
+                        </div>
+
+                        <!-- 艺术作品 3 -->
+                        <div class="carousel-slide">
+                            <div class="project-main-image">
+                                <!-- 📸 艺术作品3：替换这里 -->
+                                <!-- <img src="images/art/art3-main.jpg" alt="Art 3"> -->
+                                <div>📸 Artwork 3<br>1000x500px<br>Environment Art</div>
+                            </div>
+                            <div class="project-main-info">
+                                <h3>Artwork Title 3</h3>
+                                <p>Description of your art piece. Explain the concept, techniques used, and creative process.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-arrow next" onclick="changeArtSlide(1)">›</div>
+                </div>
+
+                <div class="carousel-thumbnails">
+                    <div class="thumbnails-container" id="art-thumbnails">
+                        <div class="thumbnail-item active" onclick="goToArtSlide(0)">
+                            <!-- 📸 艺术缩略图1 -->
+                            <!-- <img src="images/art/art1-thumb.jpg" alt="Art 1"> -->
+                            <div>Art 1<br>150x100px</div>
+                        </div>
+                        <div class="thumbnail-item" onclick="goToArtSlide(1)">
+                            <!-- 📸 艺术缩略图2 -->
+                            <div>Art 2<br>150x100px</div>
+                        </div>
+                        <div class="thumbnail-item" onclick="goToArtSlide(2)">
+                            <!-- 📸 艺术缩略图3 -->
+                            <div>Art 3<br>150x100px</div>
                         </div>
                     </div>
                 </div>
@@ -761,7 +1099,112 @@
         </div>
     </section>
 
-    <!-- ==================== SKILLS SECTION ==================== -->
+    <!-- ==================== GAME ANALYSIS & LEVEL BREAKDOWN ==================== -->
+    <section id="analysis" class="section">
+        <h2 class="section-title">Game Analysis & Level Breakdown</h2>
+        <div class="section-content">
+            <div class="projects-carousel">
+                <div class="carousel-main">
+                    <div class="carousel-arrow prev" onclick="changeAnalysisSlide(-1)">‹</div>
+
+                    <div class="carousel-slides" id="analysis-slides">
+                        <!-- 分析 1 -->
+                        <div class="carousel-slide active">
+                            <div class="project-main-image">
+                                <!-- 📸 游戏分析图片：替换这里 -->
+                                <!-- <img src="images/analysis/analysis1-main.jpg" alt="Analysis 1"> -->
+                                <div>📸 Game Analysis 1<br>1000x500px<br>Level Breakdown / Mechanic Analysis</div>
+                            </div>
+                            <div class="project-main-info">
+                                <h3>Game/Level Analysis Title 1</h3>
+                                <p>Your insights and analysis about game mechanics, level design, or player psychology. Explain your observations and understanding of game design principles.</p>
+                            </div>
+                        </div>
+
+                        <!-- 分析 2 -->
+                        <div class="carousel-slide">
+                            <div class="project-main-image">
+                                <!-- 📸 游戏分析图片：替换这里 -->
+                                <!-- <img src="images/analysis/analysis2-main.jpg" alt="Analysis 2"> -->
+                                <div>📸 Game Analysis 2<br>1000x500px<br>Level Breakdown / Mechanic Analysis</div>
+                            </div>
+                            <div class="project-main-info">
+                                <h3>Game/Level Analysis Title 2</h3>
+                                <p>Your insights and analysis about game mechanics, level design, or player psychology. Explain your observations and understanding of game design principles.</p>
+                            </div>
+                        </div>
+
+                        <!-- 分析 3 -->
+                        <div class="carousel-slide">
+                            <div class="project-main-image">
+                                <!-- 📸 游戏分析图片：替换这里 -->
+                                <!-- <img src="images/analysis/analysis3-main.jpg" alt="Analysis 3"> -->
+                                <div>📸 Game Analysis 3<br>1000x500px<br>Level Breakdown / Mechanic Analysis</div>
+                            </div>
+                            <div class="project-main-info">
+                                <h3>Game/Level Analysis Title 3</h3>
+                                <p>Your insights and analysis about game mechanics, level design, or player psychology. Explain your observations and understanding of game design principles.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-arrow next" onclick="changeAnalysisSlide(1)">›</div>
+                </div>
+
+                <div class="carousel-thumbnails">
+                    <div class="thumbnails-container" id="analysis-thumbnails">
+                        <div class="thumbnail-item active" onclick="goToAnalysisSlide(0)">
+                            <!-- 📸 分析缩略图1 -->
+                            <!-- <img src="images/analysis/analysis1-thumb.jpg" alt="Analysis 1"> -->
+                            <div>Analysis 1<br>150x100px</div>
+                        </div>
+                        <div class="thumbnail-item" onclick="goToAnalysisSlide(1)">
+                            <!-- 📸 分析缩略图2 -->
+                            <div>Analysis 2<br>150x100px</div>
+                        </div>
+                        <div class="thumbnail-item" onclick="goToAnalysisSlide(2)">
+                            <!-- 📸 分析缩略图3 -->
+                            <div>Analysis 3<br>150x100px</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== STEAM GAMES SECTION ==================== -->
+    <section id="steam" class="section">
+        <h2 class="section-title">Steam Profile</h2>
+        <div class="section-content" style="max-width: 1400px;">
+
+            <!-- Steam 个人信息 -->
+            <div id="steam-profile-container"></div>
+
+            <!-- Steam 游戏库标签 -->
+            <div class="steam-tabs">
+                <button class="steam-tab active" data-tab="most-played" onclick="switchSteamTab('most-played')">
+                    Most Played
+                </button>
+                <button class="steam-tab" data-tab="recent" onclick="switchSteamTab('recent')">
+                    Recently Played
+                </button>
+                <button class="steam-tab" data-tab="name" onclick="switchSteamTab('name')">
+                    Sort by Name
+                </button>
+            </div>
+
+            <!-- Steam 游戏网格（带滚动） -->
+            <div class="steam-games-container">
+                <div class="steam-games-grid" id="steam-games-grid">
+                    <div class="steam-loading">Loading...</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ==================== SKILLS SECTION ==================== -->    <!-- ==================== SKILLS SECTION ==================== -->
     <section id="skills" class="section">
         <h2 class="section-title">Skills</h2>
         <div class="section-content">
@@ -829,7 +1272,7 @@
                     <h3>The Ohio State University</h3>
                     <div class="position">B.S. in Computer Science and Engineering</div>
                     <div class="duration">2021 - 2025</div>
-<!--                    <p>Add your work experience, internships, or relevant educational background here.</p>-->
+                    <!--                    <p>Add your work experience, internships, or relevant educational background here.</p>-->
                 </div>
             </div>
         </div>
@@ -842,7 +1285,7 @@
             <div class="contact-info">
                 <h3>Let's Connect!</h3>
                 <div class="contact-item">
-                    <strong>Email:</strong> <a href="mailto:jingyufu@seas.upenn.edu">jingyufu@seas.upenn.edu</a>
+                    <strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#680201060f111d0e1d281b0d091b461d180d0606460d0c1d"><span class="__cf_email__" data-cfemail="b1dbd8dfd6c8c4d7c4f1c2d4d0c29fc4c1d4dfdf9fd4d5c4">[email&#160;protected]</span></a>
                 </div>
                 <div class="contact-item">
                     <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/fujingyu/">linkedin.com/in/jingyufu</a>
@@ -851,14 +1294,14 @@
                     <strong>GitHub:</strong> <a href="https://github.com/JingyuFu">github.com/JingyuFu</a>
                 </div>
                 <div class="contact-item">
-                    <strong>Portfolio:</strong> <a href="https://jingyufu.org">jingyufu.org</a>
+                    <strong>Portfolio:</strong> <a href="https://jingyufu.org">jingyufu.org (Designer)</a> <br><a href="https://jingyufu.github.io">jingyufu.github.io (Developer)</a></br>
                 </div>
             </div>
         </div>
     </section>
 </main>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ==================== 导航栏滚动高亮 ====================
     const sections = document.querySelectorAll('.section');
     const navLinks = document.querySelectorAll('.nav-menu a');
@@ -882,59 +1325,130 @@
         });
     });
 
-    // ==================== 项目轮播功能 ====================
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carousel-slide');
-    const thumbnails = document.querySelectorAll('.thumbnail-item');
+    // ==================== Game Dev 轮播功能 ====================
+    let currentGameDevSlide = 0;
+    const gameDevSlides = document.querySelectorAll('#gamedev-slides .carousel-slide');
+    const gameDevThumbnails = document.querySelectorAll('#gamedev-thumbnails .thumbnail-item');
 
-    function showSlide(index) {
-        // 确保索引在有效范围内
-        if (index >= slides.length) {
-            currentSlide = 0;
-        } else if (index < 0) {
-            currentSlide = slides.length - 1;
-        } else {
-            currentSlide = index;
-        }
+    function showGameDevSlide(index) {
+        if (index >= gameDevSlides.length) currentGameDevSlide = 0;
+        else if (index < 0) currentGameDevSlide = gameDevSlides.length - 1;
+        else currentGameDevSlide = index;
 
-        // 更新幻灯片显示
-        slides.forEach(slide => {
-            slide.classList.remove('active');
-        });
-        slides[currentSlide].classList.add('active');
+        gameDevSlides.forEach(slide => slide.classList.remove('active'));
+        gameDevSlides[currentGameDevSlide].classList.add('active');
 
-        // 更新缩略图高亮
-        thumbnails.forEach(thumb => {
-            thumb.classList.remove('active');
-        });
-        thumbnails[currentSlide].classList.add('active');
+        gameDevThumbnails.forEach(thumb => thumb.classList.remove('active'));
+        gameDevThumbnails[currentGameDevSlide].classList.add('active');
 
-        // 滚动缩略图到可见位置
-        thumbnails[currentSlide].scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-            inline: 'center'
+        gameDevThumbnails[currentGameDevSlide].scrollIntoView({
+            behavior: 'smooth', block: 'nearest', inline: 'center'
         });
     }
 
-    // 左右箭头切换
-    function changeSlide(direction) {
-        showSlide(currentSlide + direction);
+    function changeGameDevSlide(direction) { showGameDevSlide(currentGameDevSlide + direction); }
+    function goToGameDevSlide(index) { showGameDevSlide(index); }
+
+    // ==================== Animation 轮播功能 ====================
+    let currentAnimationSlide = 0;
+    const animationSlides = document.querySelectorAll('#animation-slides .carousel-slide');
+    const animationThumbnails = document.querySelectorAll('#animation-thumbnails .thumbnail-item');
+
+    function showAnimationSlide(index) {
+        if (index >= animationSlides.length) currentAnimationSlide = 0;
+        else if (index < 0) currentAnimationSlide = animationSlides.length - 1;
+        else currentAnimationSlide = index;
+
+        animationSlides.forEach(slide => slide.classList.remove('active'));
+        animationSlides[currentAnimationSlide].classList.add('active');
+
+        animationThumbnails.forEach(thumb => thumb.classList.remove('active'));
+        animationThumbnails[currentAnimationSlide].classList.add('active');
+
+        animationThumbnails[currentAnimationSlide].scrollIntoView({
+            behavior: 'smooth', block: 'nearest', inline: 'center'
+        });
     }
 
-    // 点击缩略图跳转
-    function goToSlide(index) {
-        showSlide(index);
+    function changeAnimationSlide(direction) { showAnimationSlide(currentAnimationSlide + direction); }
+    function goToAnimationSlide(index) { showAnimationSlide(index); }
+
+    // ==================== Art 轮播功能 ====================
+    let currentArtSlide = 0;
+    const artSlides = document.querySelectorAll('#art-slides .carousel-slide');
+    const artThumbnails = document.querySelectorAll('#art-thumbnails .thumbnail-item');
+
+    function showArtSlide(index) {
+        if (index >= artSlides.length) currentArtSlide = 0;
+        else if (index < 0) currentArtSlide = artSlides.length - 1;
+        else currentArtSlide = index;
+
+        artSlides.forEach(slide => slide.classList.remove('active'));
+        artSlides[currentArtSlide].classList.add('active');
+
+        artThumbnails.forEach(thumb => thumb.classList.remove('active'));
+        artThumbnails[currentArtSlide].classList.add('active');
+
+        artThumbnails[currentArtSlide].scrollIntoView({
+            behavior: 'smooth', block: 'nearest', inline: 'center'
+        });
     }
 
-    // 键盘控制（可选）
+    function changeArtSlide(direction) { showArtSlide(currentArtSlide + direction); }
+    function goToArtSlide(index) { showArtSlide(index); }
+
+    // ==================== Game Analysis 轮播功能 ====================
+    let currentAnalysisSlide = 0;
+    const analysisSlides = document.querySelectorAll('#analysis-slides .carousel-slide');
+    const analysisThumbnails = document.querySelectorAll('#analysis-thumbnails .thumbnail-item');
+
+    function showAnalysisSlide(index) {
+        if (index >= analysisSlides.length) currentAnalysisSlide = 0;
+        else if (index < 0) currentAnalysisSlide = analysisSlides.length - 1;
+        else currentAnalysisSlide = index;
+
+        analysisSlides.forEach(slide => slide.classList.remove('active'));
+        analysisSlides[currentAnalysisSlide].classList.add('active');
+
+        analysisThumbnails.forEach(thumb => thumb.classList.remove('active'));
+        analysisThumbnails[currentAnalysisSlide].classList.add('active');
+
+        analysisThumbnails[currentAnalysisSlide].scrollIntoView({
+            behavior: 'smooth', block: 'nearest', inline: 'center'
+        });
+    }
+
+    function changeAnalysisSlide(direction) { showAnalysisSlide(currentAnalysisSlide + direction); }
+    function goToAnalysisSlide(index) { showAnalysisSlide(index); }
+
+    // ==================== Steam Games 轮播功能 ====================
+    let currentSteamSlide = 0;
+    const steamSlides = document.querySelectorAll('#steam-slides .carousel-slide');
+    const steamThumbnails = document.querySelectorAll('#steam-thumbnails .thumbnail-item');
+
+    function showSteamSlide(index) {
+        if (index >= steamSlides.length) currentSteamSlide = 0;
+        else if (index < 0) currentSteamSlide = steamSlides.length - 1;
+        else currentSteamSlide = index;
+
+        steamSlides.forEach(slide => slide.classList.remove('active'));
+        steamSlides[currentSteamSlide].classList.add('active');
+
+        steamThumbnails.forEach(thumb => thumb.classList.remove('active'));
+        steamThumbnails[currentSteamSlide].classList.add('active');
+
+        steamThumbnails[currentSteamSlide].scrollIntoView({
+            behavior: 'smooth', block: 'nearest', inline: 'center'
+        });
+    }
+
+    function changeSteamSlide(direction) { showSteamSlide(currentSteamSlide + direction); }
+    function goToSteamSlide(index) { showSteamSlide(index); }
+
+    // 键盘控制（可选，控制当前可见的轮播）
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            changeSlide(-1);
-        } else if (e.key === 'ArrowRight') {
-            changeSlide(1);
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+            // 可以添加逻辑来检测当前在哪个section并控制相应的轮播
         }
     });
 </script>
-</body>
-</html>
