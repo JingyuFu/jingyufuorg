@@ -818,6 +818,100 @@
             font-size: 1.2rem;
         }
 
+
+        /* ==================== PDF 查看器样式 ==================== */
+        .pdf-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pdf-modal-content {
+            background: #fff;
+            width: 90%;
+            max-width: 1200px;
+            height: 90vh;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .pdf-modal-header {
+            background: #5eb3d6;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pdf-modal-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .pdf-close-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .pdf-close-btn:hover {
+            transform: rotate(90deg);
+        }
+
+        .pdf-iframe {
+            flex: 1;
+            border: none;
+            width: 100%;
+        }
+
+        /* PDF查看按钮 */
+        .view-pdf-btn {
+            background: #5eb3d6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-family: 'Varela Round', sans-serif;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .view-pdf-btn:hover {
+            background: #ffb3d9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(94, 179, 214, 0.3);
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .pdf-modal-content {
+                width: 95%;
+                height: 95vh;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1155,7 +1249,7 @@
                     <div class="carousel-slides" id="analysis-slides">
                         <!-- 分析 1 -->
                         <div class="carousel-slide active">
-                            <div class="project-main-image">
+                            <div class="project-main-image" onclick="openPDFViewer('documents/GameNarrativeAnalysis.pdf')" style="cursor: pointer;">
                                 <!-- 📸 游戏分析图片：替换这里 -->
                                 <img src="images/analysis/slides.png" alt="Analysis 1">
                                 <!--                                <div>📸 Game Analysis 1<br>1000x500px<br>Level Breakdown / Mechanic Analysis</div>-->
@@ -1164,32 +1258,41 @@
                                 <h3>Application of Psychological Principles in Game Design</h3>
                                 <p>Wrote a paper on enhancing player engagement in open-world games through nonlinear storytelling, and deepened the understanding of narrative techniques in game design.</p>
                                 <p><i>Advisor: Associate Prof. Geoff Kaufman, Carnegie Mellon University</i></p>
+                                <button onclick="openPDFViewer('documents/GameNarrativeAnalysis.pdf')" class="view-pdf-btn">
+                                    📄 View PDF Analysis
+                                </button>
                             </div>
                         </div>
 
                         <!-- 分析 2 -->
                         <div class="carousel-slide">
-                            <div class="project-main-image">
+                            <div class="project-main-image" onclick="openPDFViewer('documents/GameLoopAnalysis.pdf')" style="cursor: pointer;">
                                 <!-- 📸 游戏分析图片：替换这里 -->
-                                <!-- <img src="images/analysis/analysis2-main.jpg" alt="Analysis 2"> -->
-                                <div>📸 Game Analysis 2<br>1000x500px<br>Level Breakdown / Mechanic Analysis</div>
+                                <img src="images/analysis/gameloops.png" alt="Analysis 2">
+                                <!--                                <div>📸 Game Analysis 2<br>1000x500px<br>Level Breakdown / Mechanic Analysis</div>-->
                             </div>
                             <div class="project-main-info">
-                                <h3>Game/Level Analysis Title 2</h3>
-                                <p>Your insights and analysis about game mechanics, level design, or player psychology. Explain your observations and understanding of game design principles.</p>
+                                <h3>Game Loops Analysis: <i>Hunt: Showdown</i></h3>
+                                <p>Analysing 3 basic game loops in <i>Hunt: Showdown</i>, click to view online</p>
+                                <button onclick="openPDFViewer('documents/GameLoopAnalysis.pdf')" class="view-pdf-btn">
+                                    📄 View PDF Analysis
+                                </button>
                             </div>
                         </div>
 
                         <!-- 分析 3 -->
                         <div class="carousel-slide">
-                            <div class="project-main-image">
+                            <div class="project-main-image" onclick="openPDFViewer('documents/#')" style="cursor: pointer;">
                                 <!-- 📸 游戏分析图片：替换这里 -->
                                 <!-- <img src="images/analysis/analysis3-main.jpg" alt="Analysis 3"> -->
-                                <div>📸 Game Analysis 3<br>1000x500px<br>Level Breakdown / Mechanic Analysis</div>
+                                <div>📸 WIP<br>1000x500px<br>Level Breakdown / Mechanic Analysis</div>
                             </div>
                             <div class="project-main-info">
-                                <h3>Game/Level Analysis Title 3</h3>
-                                <p>Your insights and analysis about game mechanics, level design, or player psychology. Explain your observations and understanding of game design principles.</p>
+                                <h3>Level Breakdown: <i>Indiana Jones and the Great Circle </i> --Vatican </h3>
+                                <p>Semi-Open Metroidvania-Style Level Design Breakdown in <i>Indiana Jones and the Great Circle </i> </p>
+                                <button onclick="openPDFViewer('documents/#')" class="view-pdf-btn">
+                                    📄 View PDF Analysis
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1201,16 +1304,18 @@
                     <div class="thumbnails-container" id="analysis-thumbnails">
                         <div class="thumbnail-item active" onclick="goToAnalysisSlide(0)">
                             <!-- 📸 分析缩略图1 -->
-                            <!-- <img src="images/analysis/analysis1-thumb.jpg" alt="Analysis 1"> -->
-                            <div>Analysis 1<br>150x100px</div>
+                            <img src="images/analysis/ga.png" alt="Analysis 1">
+<!--                            <div>Analysis 1<br>150x100px</div>-->
                         </div>
                         <div class="thumbnail-item" onclick="goToAnalysisSlide(1)">
                             <!-- 📸 分析缩略图2 -->
-                            <div>Analysis 2<br>150x100px</div>
+                            <img src="images/analysis/hunt.jpeg" alt="Analysis 2">
+<!--                            <div>Analysis 2<br>150x100px</div>-->
                         </div>
                         <div class="thumbnail-item" onclick="goToAnalysisSlide(2)">
                             <!-- 📸 分析缩略图3 -->
-                            <div>Analysis 3<br>150x100px</div>
+                            <img src="images/analysis/ventican.jpg" alt="Analysis 3">
+<!--                            <div>WIP<br>150x100px</div>-->
                         </div>
                     </div>
                 </div>
@@ -1679,6 +1784,59 @@
             setTimeout(loadSteamData, 1000);
         }
     })();
+</script>
+
+
+<!-- ==================== PDF 查看器弹窗 ==================== -->
+<div id="pdf-modal" class="pdf-modal">
+    <div class="pdf-modal-content">
+        <div class="pdf-modal-header">
+            <h3 id="pdf-title">Document Viewer</h3>
+            <button onclick="closePDFViewer()" class="pdf-close-btn">✕</button>
+        </div>
+        <iframe id="pdf-frame" class="pdf-iframe"></iframe>
+    </div>
+</div>
+
+<!-- PDF 查看器JavaScript -->
+<script>
+    function openPDFViewer(pdfPath) {
+        const modal = document.getElementById('pdf-modal');
+        const iframe = document.getElementById('pdf-frame');
+
+        // 设置PDF路径
+        iframe.src = pdfPath;
+
+        // 显示弹窗
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // 禁止背景滚动
+    }
+
+    function closePDFViewer() {
+        const modal = document.getElementById('pdf-modal');
+        const iframe = document.getElementById('pdf-frame');
+
+        // 隐藏弹窗
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // 恢复背景滚动
+
+        // 清空iframe（停止加载）
+        iframe.src = '';
+    }
+
+    // 点击背景关闭弹窗
+    document.getElementById('pdf-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closePDFViewer();
+        }
+    });
+
+    // ESC键关闭弹窗
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closePDFViewer();
+        }
+    });
 </script>
 
 </body>
