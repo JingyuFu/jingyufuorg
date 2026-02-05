@@ -624,7 +624,90 @@
                 height: 70px;
             }
         }
+        /* ==================== 游戏查看器样式 ==================== */
+        .game-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
 
+        .game-modal-content {
+            background: #1a1a1a;
+            width: 95%;
+            max-width: 1400px;
+            height: 95vh;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.8);
+        }
+
+        .game-modal-header {
+            background: #ffb3d9;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .game-modal-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .game-close-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .game-close-btn:hover {
+            transform: rotate(90deg);
+        }
+
+        .game-iframe {
+            flex: 1;
+            border: none;
+            width: 100%;
+            background: white;
+        }
+
+        .play-game-btn {
+            background: linear-gradient(135deg, #ffb3d9, #ff8ec7);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1.1rem;
+            font-family: 'Varela Round', sans-serif;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .play-game-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 179, 217, 0.4);
+        }
         /* ==================== STEAM 专属样式 ==================== */
         #steam .section-content {
             max-width: 1400px !important;
@@ -927,6 +1010,7 @@
             <li><a href="#about" class="active">About Me</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li><a href="#steam">Games</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -974,7 +1058,7 @@
                             <a href="https://www.upenn.edu/" target="_blank"><img src="images/icon/upenn.svg" alt="UPenn"></a>
                         </span>
                     </p>
-                    <p>Game streamer with 1,000+ titles played across multiple platforms (PlayStation/Xbox/Switch/3DS/PC), 10,000+ hours of gameplay, and 4M+ views on <a href="https://www.bilibili.com">Bilibili</a>.
+                    <p>Game streamer with 1,000+ titles played across multiple platforms (PlayStation/Xbox/Switch/3DS/PC), 20,000+ hours of gameplay, and 4M+ views on <a href="https://www.bilibili.com">Bilibili</a>.
                         <span class="icon-group">
                             <a href="https://www.playstation.com/" target="_blank"><img src="images/icon/playstation.png" alt="PlayStation"></a>
                             <a href="https://www.xbox.com/" target="_blank"><img src="images/icon/xbox.png" alt="Xbox"></a>
@@ -1065,6 +1149,21 @@
                                 <p>Game Demo available:<a href="https://drive.google.com/file/d/1NqHatVoZtzODEZjEdE768nK1pjtzSnet/view?usp=sharing" target="_blank">Link</a></p>
                             </div>
                         </div>
+
+
+                        <!-- 项目 6 -->
+                        <div class="carousel-slide">
+                            <div class="project-main-image">
+                                <img src="images/projects/dreadtitle.png" alt="Dread Drift">
+                            </div>
+                            <div class="project-main-info">
+                                <h3>Dread Drift</h3>
+                                <p>A text-based interactive fiction game made with Twine.</p>
+                                <button onclick="openGameViewer('games/Dread.html')" class="play-game-btn">
+                                    🎮 Play Now
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="carousel-arrow next" onclick="changeGameDevSlide(1)">›</div>
@@ -1087,6 +1186,10 @@
                         <div class="thumbnail-item" onclick="goToGameDevSlide(4)">
                             <img src="images/projects/thumbunailmc.png" alt="Project 5">
                         </div>
+                        <div class="thumbnail-item" onclick="goToGameDevSlide(5)">
+                            <img src="images/projects/dreaddrift.jpg" alt="Project 6">
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -1836,6 +1939,45 @@
         if (e.key === 'Escape') {
             closePDFViewer();
         }
+    });
+</script>
+
+<!-- ==================== 游戏查看器弹窗 ==================== -->
+<div id="game-modal" class="game-modal">
+    <div class="game-modal-content">
+        <div class="game-modal-header">
+            <h3 id="game-title">Game Viewer</h3>
+            <button onclick="closeGameViewer()" class="game-close-btn">✕</button>
+        </div>
+        <iframe id="game-frame" class="game-iframe"></iframe>
+    </div>
+</div>
+
+<script>
+    function openGameViewer(gamePath) {
+        const modal = document.getElementById('game-modal');
+        const iframe = document.getElementById('game-frame');
+        iframe.src = gamePath;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeGameViewer() {
+        const modal = document.getElementById('game-modal');
+        const iframe = document.getElementById('game-frame');
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        iframe.src = ''; // 停止游戏
+    }
+
+    // 点击背景关闭
+    document.getElementById('game-modal').addEventListener('click', function(e) {
+        if (e.target === this) closeGameViewer();
+    });
+
+    // ESC关闭
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeGameViewer();
     });
 </script>
 
