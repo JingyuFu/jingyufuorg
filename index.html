@@ -16,6 +16,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
 
     <style>
+        /* ==================== 主题颜色变量 ==================== */
+        :root {
+            /* 背景色 */
+            --bg-primary: #faf8f3;
+            --bg-sidebar: #ffffff;
+            --bg-card: #ffffff;
+
+            /* 文字色 */
+            --text-primary: #2c2c2c;
+            --text-secondary: #666666;
+
+            /* 主题色 */
+            --color-primary: #ffb3d9;
+            --color-secondary: #5eb3d6;
+
+            /* 边框 */
+            --border-color: #e0e0e0;
+            --sidebar-border: #5eb3d6;
+        }
+
+        /* 暗色主题 */
+        body.dark-mode {
+            --bg-primary: #1a1f2e;
+            --bg-sidebar: #151820;
+            --bg-card: #242938;
+
+            --text-primary: #e8e8e8;
+            --text-secondary: #b0b0b0;
+
+            /* 主题色对调 */
+            --color-primary: #5eb3d6;
+            --color-secondary: #ffb3d9;
+
+            --border-color: #3a3f52;
+            --sidebar-border: #ffb3d9;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -28,8 +65,9 @@
 
         body {
             font-family: 'Varela Round', sans-serif;
-            background-color: #faf8f3;
-            color: #2c2c2c;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* 左侧导航栏 */
@@ -39,11 +77,12 @@
             top: 0;
             width: 250px;
             height: 100vh;
-            background: #ffffff;
-            border-right: 3px solid #5eb3d6;
+            background: var(--bg-sidebar);
+            border-right: 3px solid var(--sidebar-border);
             padding: 40px 20px;
             z-index: 1000;
             overflow-y: auto;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .sidebar-logo {
@@ -136,11 +175,12 @@
 
         .section-title {
             font-size: 2.5rem;
-            color: #ffb3d9;
+            color: var(--color-primary);
             margin-bottom: 30px;
             padding-bottom: 15px;
-            border-bottom: 3px solid #5eb3d6;
+            border-bottom: 3px solid var(--color-secondary);
             display: inline-block;
+            transition: color 0.3s ease, border-color 0.3s ease;
         }
 
         .section-content {
@@ -231,11 +271,12 @@
         /* 子标题样式 */
         .subsection-title {
             font-size: 1.8rem;
-            color: #5eb3d6;
+            color: var(--color-secondary);
             margin: 50px 0 30px 0;
             padding-bottom: 10px;
-            border-bottom: 2px solid #ffb3d9;
+            border-bottom: 2px solid var(--color-primary);
             display: inline-block;
+            transition: color 0.3s ease, border-color 0.3s ease;
         }
 
         .subsection-title:first-child {
@@ -995,6 +1036,148 @@
             }
         }
 
+
+        /* ==================== 自定义光标样式 ==================== */
+
+        /* 1. 默认光标 - 普通浏览 */
+        body, * {
+            cursor: url('images/cursor/cursor-default.png') 16 16, auto;
+        }
+
+        /* 2. 指针光标 - 链接和按钮 */
+        a, button, .clickable,
+        .carousel-arrow,
+        .thumbnail-item,
+        .nav-menu a,
+        .steam-tab,
+        .view-pdf-btn,
+        .play-game-btn {
+            cursor: url('images/cursor/cursor-pointer.png') 16 16, pointer;
+        }
+
+        /* 3. 文本光标 - 输入框和可编辑区域 */
+        input, textarea,
+        input[type="text"],
+        input[type="email"] {
+            cursor: url('images/cursor/cursor-text.png') 16 16, text;
+        }
+
+        /* 4. 等待光标 - 加载状态 */
+        .loading,
+        body.loading * {
+            cursor: url('images/cursor/cursor-wait.png') 16 16, wait;
+        }
+
+        /* 5. 帮助光标 - 帮助提示（可选） */
+        .help-icon {
+            cursor: url('images/cursor/cursor-help.png') 16 16, help;
+        }
+
+        /* 6. 滚轮/抓取（可选，如果你想要的话） */
+        .draggable {
+            cursor: url('images/cursor/cursor-grab.png') 16 16, grab;
+        }
+
+        .dragging {
+            cursor: url('images/cursor/cursor-grabbing.png') 16 16, grabbing;
+        }
+
+
+
+        /* ==================== 主题切换开关 ==================== */
+        .theme-toggle-container {
+            padding: 20px;
+            border-top: 2px solid var(--border-color);
+            margin-top: 20px;
+        }
+
+        .theme-toggle {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+            border-radius: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .theme-icon {
+            font-size: 1.5rem;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .theme-icon.sun {
+            opacity: 1;
+        }
+
+        .theme-icon.moon {
+            opacity: 0.5;
+        }
+
+        body.dark-mode .theme-icon.sun {
+            opacity: 0.5;
+        }
+
+        body.dark-mode .theme-icon.moon {
+            opacity: 1;
+        }
+
+        /* 滑块 */
+        .theme-slider {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            left: 5px;
+            top: 5px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        body.dark-mode .theme-slider {
+            left: calc(100% - 45px);
+        }
+        /*切换日间模式和夜间模式*/
+        .theme-slider::before {
+            /*content: '☀️';*/
+            content: '🌞';
+        }
+
+        body.dark-mode .theme-slider::before {
+            /*content: '🌙';*/
+            content: '🌛';
+        }
+
+        /* 主题切换标签（可选） */
+        .theme-label {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-size: 0.85rem;
+            color: white;
+            font-weight: 600;
+            pointer-events: none;
+            z-index: 1;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
     </style>
 </head>
 <body>
@@ -1021,9 +1204,20 @@
         <a href="https://www.linkedin.com/in/fujingyu/">LinkedIn</a>
         <a href="/cdn-cgi/l/email-protection#5d3734333a24283b281d2e383c2e73282d38333373383928">Email</a>
         <a href="https://steamcommunity.com/profiles/76561198313678147/">Steam</a>
-        <a href="https://www.linkedin.com/in/fujingyu/">LinkedIn</a>
+        <!--        <a href="https://www.linkedin.com/in/fujingyu/">LinkedIn</a>-->
         <a href="#">Bilibili</a>
         <a href="#">Discord</a>
+    </div>
+
+    <!-- 主题切换开关 -->
+    <div class="theme-toggle-container">
+        <div class="theme-toggle" onclick="toggleTheme()">
+            <span class="theme-icon sun"></span>
+<!--            <span class="theme-label">Theme</span>-->
+            <span class="theme-label"></span>
+            <span class="theme-icon moon"></span>
+            <div class="theme-slider"></div>
+        </div>
     </div>
 </aside>
 
@@ -1388,7 +1582,7 @@
                             <div class="project-main-image" onclick="openPDFViewer('documents/#')" style="cursor: pointer;">
                                 <!-- 📸 游戏分析图片：替换这里 -->
                                 <img src="images/analysis/ind.jpg" alt="Analysis 3">
-<!--                                <div>📸 WIP<br>1000x500px<br>Level Breakdown / Mechanic Analysis</div>-->
+                                <!--                                <div>📸 WIP<br>1000x500px<br>Level Breakdown / Mechanic Analysis</div>-->
                             </div>
                             <div class="project-main-info">
                                 <h3>Level Breakdown: <i>Indiana Jones and the Great Circle </i> --Vatican </h3>
@@ -1408,17 +1602,17 @@
                         <div class="thumbnail-item active" onclick="goToAnalysisSlide(0)">
                             <!-- 📸 分析缩略图1 -->
                             <img src="images/analysis/ga.png" alt="Analysis 1">
-<!--                            <div>Analysis 1<br>150x100px</div>-->
+                            <!--                            <div>Analysis 1<br>150x100px</div>-->
                         </div>
                         <div class="thumbnail-item" onclick="goToAnalysisSlide(1)">
                             <!-- 📸 分析缩略图2 -->
                             <img src="images/analysis/hunt.jpeg" alt="Analysis 2">
-<!--                            <div>Analysis 2<br>150x100px</div>-->
+                            <!--                            <div>Analysis 2<br>150x100px</div>-->
                         </div>
                         <div class="thumbnail-item" onclick="goToAnalysisSlide(2)">
                             <!-- 📸 分析缩略图3 -->
                             <img src="images/analysis/ventican.jpg" alt="Analysis 3">
-<!--                            <div>WIP<br>150x100px</div>-->
+                            <!--                            <div>WIP<br>150x100px</div>-->
                         </div>
                     </div>
                 </div>
@@ -1464,6 +1658,9 @@
                         <span class="skill-item">Miro</span>
                         <span class="skill-item">Jira</span>
                         <span class="skill-item">Figma</span>
+                        <span class="skill-item">Photoshop</span>
+                        <span class="skill-item">After Effects</span>
+                        <span class="skill-item">Premiere</span>
                         <span class="skill-item">Confluence</span>
                     </div>
                 </div>
@@ -1475,6 +1672,9 @@
                         <span class="skill-item">Godot</span>
                         <span class="skill-item">Blender</span>
                         <span class="skill-item">Maya</span>
+                        <span class="skill-item">Houdini</span>
+                        <span class="skill-item">Captury</span>
+                        <span class="skill-item">MotionBuilder</span>
                         <span class="skill-item">OpenGL</span>
                     </div>
                 </div>
@@ -1487,6 +1687,8 @@
                         <span class="skill-item">Python</span>
                         <span class="skill-item">JavaScript</span>
                         <span class="skill-item">HTML/CSS</span>
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">C</span>
                     </div>
                 </div>
 
@@ -1979,6 +2181,53 @@
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') closeGameViewer();
     });
+</script>
+
+<!-- ==================== Landing Page 跳转 ==================== -->
+<script>
+    window.addEventListener('load', function() {
+        if (!window.location.hash) {
+            setTimeout(function() {
+                document.getElementById('projects').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                document.querySelector('.nav-menu a[href="#projects"]').classList.add('active');
+            }, 100);
+        }
+    });
+</script>
+
+<!-- ==================== 主题切换功能 ==================== -->
+<script>
+    // 检查并应用保存的主题
+    function initializeTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    }
+
+    // 切换主题
+    function toggleTheme() {
+        const isDark = document.body.classList.toggle('dark-mode');
+
+        // 保存用户选择
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+        // 可选：添加一个小动画效果
+        document.querySelector('.theme-toggle').style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            document.querySelector('.theme-toggle').style.transform = 'scale(1)';
+        }, 100);
+    }
+
+    // 页面加载时初始化主题
+    document.addEventListener('DOMContentLoaded', initializeTheme);
 </script>
 
 </body>
