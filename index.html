@@ -1051,7 +1051,8 @@
         .nav-menu a,
         .steam-tab,
         .view-pdf-btn,
-        .play-game-btn {
+        .play-game-btn,
+        .category-header {
             cursor: url('images/cursor/cursor-pointer.png') 16 16, pointer;
         }
 
@@ -1281,6 +1282,162 @@
             text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
 
+
+        /* ==================== GAMING EXPERIENCE STYLES ==================== */
+        .gaming-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card h4 {
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+            font-weight: bold;
+        }
+
+        .stat-card p {
+            font-size: 1rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .game-categories {
+            margin-top: 40px;
+        }
+
+        .category-card {
+            background: var(--bg-sidebar);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-header {
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-primary);
+            transition: background 0.3s ease;
+        }
+
+        .category-header:hover {
+            background: rgba(94, 179, 214, 0.05);
+        }
+
+        .category-header h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--color-secondary);
+        }
+
+        .toggle-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            color: var(--color-primary);
+        }
+
+        .toggle-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        .category-content {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .category-content.expanded {
+            padding: 20px 25px;
+            max-height: 1000px;
+        }
+
+        .game-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .game-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .game-list li:last-child {
+            border-bottom: none;
+        }
+
+        .game-list li span {
+            color: var(--text-color);
+        }
+
+        .download-section {
+            margin-top: 40px;
+            text-align: center;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .download-section .view-pdf-btn {
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(94, 179, 214, 0.3);
+        }
+
+        .download-section .view-pdf-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(94, 179, 214, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .gaming-stats {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .stat-card h4 {
+                font-size: 2rem;
+            }
+
+            .download-section {
+                flex-direction: column;
+            }
+
+            .download-section .view-pdf-btn {
+                width: 100%;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1296,8 +1453,8 @@
             <li><a href="#about" class="active" data-en="About Me" data-zh="关于我">About Me</a></li>
             <li><a href="#projects" data-en="Projects" data-zh="项目">Projects</a></li>
             <li><a href="#skills" data-en="Skills" data-zh="技能">Skills</a></li>
+            <li><a href="#experience" data-en="Experience" data-zh="经历">Experience</a></li>
             <li><a href="#steam" data-en="Games" data-zh="游戏">Games</a></li>
-            <li><a href="#experience" data-en="Experience" data-zh="学历">Experience</a></li>
             <li><a href="#contact" data-en="Contact" data-zh="联系方式">Contact</a></li>
         </ul>
     </nav>
@@ -1305,11 +1462,11 @@
     <div class="social-links">
         <a href="https://github.com/JingyuFu">GitHub</a>
         <a href="https://www.linkedin.com/in/fujingyu/">LinkedIn</a>
-<!--        <a href="/cdn-cgi/l/email-protection#5d3734333a24283b281d2e383c2e73282d38333373383928">Email</a>-->
-<!--        <a href="https://steamcommunity.com/profiles/76561198313678147/">Steam</a>-->
+        <!--        <a href="/cdn-cgi/l/email-protection#5d3734333a24283b281d2e383c2e73282d38333373383928">Email</a>-->
+        <!--        <a href="https://steamcommunity.com/profiles/76561198313678147/">Steam</a>-->
         <!--        <a href="https://www.linkedin.com/in/fujingyu/">LinkedIn</a>-->
-<!--        <a href="#">Bilibili</a>-->
-<!--        <a href="#">Discord</a>-->
+        <!--        <a href="#">Bilibili</a>-->
+        <!--        <a href="#">Discord</a>-->
     </div>
 
     <!-- 主题切换开关 -->
@@ -1327,7 +1484,7 @@
     <div class="language-toggle-container">
         <div class="language-toggle" onclick="toggleLanguage()">
             <span class="language-icon en"></span>
-<!--            <span class="language-label">Language</span>-->
+            <!--            <span class="language-label">Language</span>-->
             <span class="language-label"></span>
             <span class="language-icon zh"></span>
             <div class="language-slider"></div>
@@ -1556,8 +1713,8 @@
                                 <!--                                <div>📸 Animation Work 1<br>1000x500px</div>-->
                             </div>
                             <div class="project-main-info">
-<!--                                <h3>Forward-Inverse Kinematics System</h3>-->
-<!--                                <p>Developed forward kinematics for hierarchical skeletal animation and implemented three IK solvers (Limb-based, CCD, Pseudo-Inverse) for procedural pose generation.</p>-->
+                                <!--                                <h3>Forward-Inverse Kinematics System</h3>-->
+                                <!--                                <p>Developed forward kinematics for hierarchical skeletal animation and implemented three IK solvers (Limb-based, CCD, Pseudo-Inverse) for procedural pose generation.</p>-->
                                 <h3 data-en="Forward-Inverse Kinematics System" data-zh="正向-反向运动学系统">Forward-Inverse Kinematics System</h3>
 
                                 <p><span data-en="Interactive skeletal animation toolkit featuring real-time FK/IK pose editing, procedural motion generation, and Unity integration for character control systems." data-zh="交互式骨骼动画工具包，具有实时FK/IK姿态编辑、程序化动作生成和Unity角色控制系统集成。">Interactive skeletal animation toolkit featuring real-time FK/IK pose editing, procedural motion generation, and Unity integration for character control systems.</span></p>
@@ -1566,8 +1723,8 @@
 
                                 <p><strong data-en="Tools:" data-zh="工具：">Tools:</strong> C++, Visual Studio, Unity, OpenGL, CMake</p>
 
-<!--                                <button onclick="openPDFViewer('documents/FKIK_Assignment.pdf')" class="view-pdf-btn">-->
-<!--                                    <span data-en="📄 View Technical Documentation" data-zh="📄 查看技术文档">📄 View Technical Documentation</span>-->
+                                <!--                                <button onclick="openPDFViewer('documents/FKIK_Assignment.pdf')" class="view-pdf-btn">-->
+                                <!--                                    <span data-en="📄 View Technical Documentation" data-zh="📄 查看技术文档">📄 View Technical Documentation</span>-->
                                 </button>
                             </div>
                         </div>
@@ -1580,8 +1737,8 @@
                                 <!--                                <div>📸 Animation Work 2<br>1000x500px</div>-->
                             </div>
                             <div class="project-main-info">
-<!--                                <h3>Predators-Prey System</h3>-->
-<!--                                <p>Designed and implemented complex AI behaviors—including random wandering, pursuit, and evasion—by integrating Finite State Machines (FSM) and Behavior Trees.</p>-->
+                                <!--                                <h3>Predators-Prey System</h3>-->
+                                <!--                                <p>Designed and implemented complex AI behaviors—including random wandering, pursuit, and evasion—by integrating Finite State Machines (FSM) and Behavior Trees.</p>-->
                                 <h3 data-en="Boid Flocking & Behavioral Animation System" data-zh="Boid群体行为与行为动画系统">Boid Flocking & Behavioral Animation System</h3>
 
                                 <p><span data-en="Physics-based crowd simulation featuring autonomous agent behaviors, predator-prey dynamics, and emergent flocking patterns through steering force algorithms." data-zh="基于物理的群体模拟系统，包含自主智能体行为、捕食者-猎物动力学以及通过转向力算法实现的涌现群体模式。">Physics-based crowd simulation featuring autonomous agent behaviors, predator-prey dynamics, and emergent flocking patterns through steering force algorithms.</span></p>
@@ -1600,8 +1757,8 @@
                                 <!--                                <div>📸 Animation Work 3<br>1000x500px</div>-->
                             </div>
                             <div class="project-main-info">
-<!--                                <h3>Motion Capture</h3>-->
-<!--                                <p>Developed complete walk cycle animations in MotionBuilder using FK/IK systems, key poses, F-curves, and time warping techniques to create polished character locomotion with proper weight distribution and footfall timing.</p>-->
+                                <!--                                <h3>Motion Capture</h3>-->
+                                <!--                                <p>Developed complete walk cycle animations in MotionBuilder using FK/IK systems, key poses, F-curves, and time warping techniques to create polished character locomotion with proper weight distribution and footfall timing.</p>-->
                                 <h3 data-en="Motion Capture & Keyframe Animation Pipeline" data-zh="动作捕捉与关键帧动画流程">Motion Capture & Keyframe Animation Pipeline</h3>
 
                                 <p><span data-en="Full-body character animation workflow combining hand-keyed locomotion cycles, optical motion capture processing, and seamless motion blending for realistic character performances." data-zh="全身角色动画工作流程，结合手动关键帧运动循环、光学动作捕捉处理以及无缝动作混合，实现真实角色表演。">Full-body character animation workflow combining hand-keyed locomotion cycles, optical motion capture processing, and seamless motion blending for realistic character performances.</span></p>
@@ -1610,9 +1767,9 @@
 
                                 <p><strong data-en="Tools:" data-zh="工具：">Tools:</strong> MotionBuilder, Captury Motion Capture System, FK/IK Rigging, Time Warping</p>
 
-<!--                                <button onclick="window.open('path/to/walkcycle-video.mp4')" class="view-pdf-btn">-->
-<!--                                    <span data-en="🎥 View Walk Cycle Demo" data-zh="🎥 查看行走循环演示">🎥 View Walk Cycle Demo</span>-->
-<!--                                </button>-->
+                                <!--                                <button onclick="window.open('path/to/walkcycle-video.mp4')" class="view-pdf-btn">-->
+                                <!--                                    <span data-en="🎥 View Walk Cycle Demo" data-zh="🎥 查看行走循环演示">🎥 View Walk Cycle Demo</span>-->
+                                <!--                                </button>-->
                             </div>
                         </div>
                     </div>
@@ -1717,104 +1874,6 @@
         </div>
     </section>
 
-    <!-- ========== Game Analysis 子部分 ========== -->
-    <h3 id="design" class="subsection-title" data-en="Game Analysis & Level Breakdown" data-zh="游戏分析与关卡拆解">Game Analysis & Level Breakdown</h3>
-    <div class="projects-carousel">
-        <div class="carousel-main">
-            <div class="carousel-arrow prev" onclick="changeAnalysisSlide(-1)">‹</div>
-
-            <div class="carousel-slides" id="analysis-slides">
-                <!-- 分析 1 -->
-                <div class="carousel-slide active">
-                    <div class="project-main-image" onclick="openPDFViewer('documents/GameNarrativeAnalysis.pdf')" style="cursor: pointer;">
-                        <!-- 📸 游戏分析图片：替换这里 -->
-                        <img src="images/analysis/slides.png" alt="Analysis 1">
-                        <!--                                <div>📸 Game Analysis 1<br>1000x500px<br>Level Breakdown / Mechanic Analysis</div>-->
-                    </div>
-                    <div class="project-main-info">
-                        <h3>Application of Psychological Principles in Game Design</h3>
-                        <p>Wrote a paper on enhancing player engagement in open-world games through nonlinear storytelling, and deepened the understanding of narrative techniques in game design.</p>
-                        <p><i>Advisor: Associate Prof. Geoff Kaufman, Carnegie Mellon University</i></p>
-                        <button onclick="openPDFViewer('documents/GameNarrativeAnalysis.pdf')" class="view-pdf-btn">
-                            📄 View PDF Analysis
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 分析 2 -->
-                <div class="carousel-slide">
-                    <div class="project-main-image" onclick="openPDFViewer('documents/GameLoopAnalysis.pdf')" style="cursor: pointer;">
-                        <!-- 📸 游戏分析图片：替换这里 -->
-                        <img src="images/analysis/gameloops.png" alt="Analysis 2">
-                        <!--                                <div>📸 Game Analysis 2<br>1000x500px<br>Level Breakdown / Mechanic Analysis</div>-->
-                    </div>
-                    <div class="project-main-info">
-                        <h3>Game Loops Analysis: <i>Hunt: Showdown</i></h3>
-                        <p>Analysing 3 basic game loops in <i>Hunt: Showdown</i>, click to view online</p>
-                        <button onclick="openPDFViewer('documents/GameLoopAnalysis.pdf')" class="view-pdf-btn">
-                            📄 View PDF Analysis
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 分析 3 -->
-                <div class="carousel-slide">
-                    <div class="project-main-image" onclick="openPDFViewer('documents/#')" style="cursor: pointer;">
-                        <!-- 📸 游戏分析图片：替换这里 -->
-                        <img src="images/analysis/ind.jpg" alt="Analysis 3">
-                        <!--                                <div>📸 WIP<br>1000x500px<br>Level Breakdown / Mechanic Analysis</div>-->
-                    </div>
-                    <div class="project-main-info">
-                        <h3>Level Breakdown: <i>Indiana Jones and the Great Circle </i> --Vatican </h3>
-                        <p>Semi-Open Metroidvania-Style Level Design Breakdown in <i>Indiana Jones and the Great Circle </i> </p>
-                        <button onclick="openPDFViewer('documents/#')" class="view-pdf-btn">
-                            📄 View PDF Analysis
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-arrow next" onclick="changeAnalysisSlide(1)">›</div>
-        </div>
-
-        <div class="carousel-thumbnails">
-            <div class="thumbnails-container" id="analysis-thumbnails">
-                <div class="thumbnail-item active" onclick="goToAnalysisSlide(0)">
-                    <!-- 📸 分析缩略图1 -->
-                    <img src="images/analysis/ga.png" alt="Analysis 1">
-                    <!--                            <div>Analysis 1<br>150x100px</div>-->
-                </div>
-                <div class="thumbnail-item" onclick="goToAnalysisSlide(1)">
-                    <!-- 📸 分析缩略图2 -->
-                    <img src="images/analysis/hunt.jpeg" alt="Analysis 2">
-                    <!--                            <div>Analysis 2<br>150x100px</div>-->
-                </div>
-                <div class="thumbnail-item" onclick="goToAnalysisSlide(2)">
-                    <!-- 📸 分析缩略图3 -->
-                    <img src="images/analysis/ventican.jpg" alt="Analysis 3">
-                    <!--                            <div>WIP<br>150x100px</div>-->
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ==================== STEAM GAMES SECTION ==================== -->
-    <section id="steam" class="section">
-        <h2 class="section-title">Steam Profile</h2>
-        <div class="section-content" style="max-width: 1400px;">
-            <div id="steam-profile-container"></div>
-            <div class="steam-tabs">
-                <button class="steam-tab active" data-tab="most-played" onclick="switchSteamTab('most-played')">Most Played</button>
-                <button class="steam-tab" data-tab="recent" onclick="switchSteamTab('recent')">Recently Played</button>
-                <button class="steam-tab" data-tab="name" onclick="switchSteamTab('name')">Sort by Name</button>
-            </div>
-            <div class="steam-games-container">
-                <div class="steam-games-grid" id="steam-games-grid">
-                    <div class="steam-loading">Loading...</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ==================== SKILLS SECTION ==================== -->    <!-- ==================== SKILLS SECTION ==================== -->
     <section id="skills" class="section">
@@ -1876,10 +1935,14 @@
         </div>
     </section>
 
+
     <!-- ==================== EXPERIENCE SECTION ==================== -->
     <section id="experience" class="section">
-        <h2 class="section-title" data-en="Experience" data-zh="学历">Experience</h2>
+        <h2 class="section-title" data-en="Experience" data-zh="经历">Experience</h2>
         <div class="section-content">
+
+            <!-- Education Subsection -->
+            <h3 class="subsection-title" data-en="Education" data-zh="教育背景">Education</h3>
             <div class="experience-container">
                 <div class="experience-item">
                     <h3 data-en="University of Pennsylvania" data-zh="宾夕法尼亚大学">University of Pennsylvania</h3>
@@ -1892,11 +1955,141 @@
                     <h3 data-en="The Ohio State University" data-zh="俄亥俄州立大学">The Ohio State University</h3>
                     <div class="position" data-en="B.S. in Computer Science and Engineering" data-zh="计算机科学与工程理学学士">B.S. in Computer Science and Engineering</div>
                     <div class="duration">2021 - 2025</div>
-                    <!--                    <p>Add your work experience, internships, or relevant educational background here.</p>-->
+                </div>
+            </div>
+
+            <!-- Gaming Experience Subsection -->
+            <h3 class="subsection-title" data-en="Gaming Experience" data-zh="游戏经历" style="margin-top: 60px;">Gaming Experience</h3>
+
+            <!-- Stats Overview -->
+            <div class="gaming-stats">
+                <div class="stat-card">
+                    <h4 data-en="2,000+" data-zh="2000+">2,000+</h4>
+                    <p data-en="Games Played" data-zh="游戏数量">Games Played</p>
+                </div>
+                <div class="stat-card">
+                    <h4 data-en="20,000+" data-zh="20000+">20,000+</h4>
+                    <p data-en="Hours Total" data-zh="总时长">Hours Total</p>
+                </div>
+                <div class="stat-card">
+                    <h4 data-en="4M+" data-zh="400万+">4M+</h4>
+                    <p data-en="Bilibili Views" data-zh="B站播放">Bilibili Views</p>
+                </div>
+            </div>
+
+            <!-- Game Categories (Collapsible) -->
+            <div class="game-categories">
+                <!-- FPS/TPS Games -->
+                <div class="category-card">
+                    <div class="category-header" onclick="toggleCategory('fps')">
+                        <h4 data-en="FPS/TPS Games (60+ titles, 6,000+ hours)" data-zh="FPS/TPS游戏（60+款，6000+小时）">FPS/TPS Games (60+ titles, 6,000+ hours)</h4>
+                        <span class="toggle-icon" id="fps-icon">▼</span>
+                    </div>
+                    <div class="category-content" id="fps-content">
+                        <ul class="game-list">
+                            <li><span data-en="Rainbow Six Siege - 3,000+ hours" data-zh="彩虹六号：围攻 - 3000+小时">Rainbow Six Siege - 3,000+ hours</span></li>
+                            <li><span data-en="Overwatch 1 & 2 (CN + Global) - 1,500 hours" data-zh="守望先锋（1+2，国服+外服）- 1500小时">Overwatch 1 & 2 (CN + Global) - 1,500 hours</span></li>
+                            <li><span data-en="Insurgency: Sandstorm - 1,000+ hours" data-zh="叛乱：沙暴 - 1000+小时">Insurgency: Sandstorm - 1,000+ hours</span></li>
+                            <li><span data-en="CS:GO - 600+ hours" data-zh="CS:GO - 600+小时">CS:GO - 600+ hours</span></li>
+                            <li><span data-en="Hunt: Showdown - 500+ hours" data-zh="猎杀对决 - 500+小时">Hunt: Showdown - 500+ hours</span></li>
+                            <li><span data-en="Apex Legends - 400+ hours" data-zh="Apex Legends - 400+小时">Apex Legends - 400+ hours</span></li>
+                            <li><span data-en="Plus 50+ other FPS/TPS titles" data-zh="以及其他50+款FPS/TPS游戏">Plus 50+ other FPS/TPS titles</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- AAA Games -->
+                <div class="category-card">
+                    <div class="category-header" onclick="toggleCategory('aaa')">
+                        <h4 data-en="AAA Games (200+ titles, 2,000+ hours)" data-zh="3A游戏（200+款，2000+小时）">AAA Games (200+ titles, 2,000+ hours)</h4>
+                        <span class="toggle-icon" id="aaa-icon">▼</span>
+                    </div>
+                    <div class="category-content" id="aaa-content">
+                        <ul class="game-list">
+                            <li><span data-en="Assassin's Creed Odyssey - 100+ hours" data-zh="刺客信条：奥德赛 - 100+小时">Assassin's Creed Odyssey - 100+ hours</span></li>
+                            <li><span data-en="Assassin's Creed Shadows - 90+ hours" data-zh="刺客信条：影 - 90+小时">Assassin's Creed Shadows - 90+ hours</span></li>
+                            <li><span data-en="Elden Ring - 90+ hours" data-zh="艾尔登法环 - 90+小时">Elden Ring - 90+ hours</span></li>
+                            <li><span data-en="Kingdom Come: Deliverance II - 80+ hours" data-zh="天国：拯救2 - 80+小时">Kingdom Come: Deliverance II - 80+ hours</span></li>
+                            <li><span data-en="Ghost of Tsushima - 60+ hours" data-zh="对马岛之鬼 - 60+小时">Ghost of Tsushima - 60+ hours</span></li>
+                            <li><span data-en="God of War Series - 50+ hours each" data-zh="战神系列 - 50+小时每部">God of War Series - 50+ hours each</span></li>
+                            <li><span data-en="Cyberpunk 2077 - 50+ hours" data-zh="赛博朋克2077 - 50+小时">Cyberpunk 2077 - 50+ hours</span></li>
+                            <li><span data-en="Plus 190+ other AAA titles" data-zh="以及其他190+款3A游戏">Plus 190+ other AAA titles</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Metroidvania Games -->
+                <div class="category-card">
+                    <div class="category-header" onclick="toggleCategory('metroidvania')">
+                        <h4 data-en="Metroidvania Games (100+ titles, 1,000+ hours)" data-zh="类银河战士恶魔城（100+款，1000+小时）">Metroidvania Games (100+ titles, 1,000+ hours)</h4>
+                        <span class="toggle-icon" id="metroidvania-icon">▼</span>
+                    </div>
+                    <div class="category-content" id="metroidvania-content">
+                        <p data-en="Primary focus area for level design and game design specialization" data-zh="关卡设计与游戏设计的主要专攻方向" style="margin-bottom: 15px; font-style: italic; color: var(--color-secondary);">Primary focus area for level design and game design specialization</p>
+                        <ul class="game-list">
+                            <li>Hollow Knight</li>
+                            <li>Ori and the Blind Forest / Will of the Wisps</li>
+                            <li>Dead Cells</li>
+                            <li>Blasphemous</li>
+                            <li>Salt and Sanctuary</li>
+                            <li>Nine Sols</li>
+                            <li>Ender Lilies</li>
+                            <li><span data-en="Plus 90+ other Metroidvania titles" data-zh="以及其他90+款类银河战士恶魔城游戏">Plus 90+ other Metroidvania titles</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Mobile Games -->
+                <div class="category-card">
+                    <div class="category-header" onclick="toggleCategory('mobile')">
+                        <h4 data-en="Mobile Games (50+ titles)" data-zh="手机游戏（50+款）">Mobile Games (50+ titles)</h4>
+                        <span class="toggle-icon" id="mobile-icon">▼</span>
+                    </div>
+                    <div class="category-content" id="mobile-content">
+                        <ul class="game-list">
+                            <li><span data-en="Sanguosha Mobile - 5 years, 1,000+ hours" data-zh="三国杀移动版 - 5年，1000+小时">Sanguosha Mobile - 5 years, 1,000+ hours</span></li>
+                            <li><span data-en="Honkai: Star Rail - 2 years" data-zh="崩坏星穹铁道 - 2年">Honkai: Star Rail - 2 years</span></li>
+                            <li><span data-en="Re:1999 - 2 years, Server Top 50" data-zh="钢岚 - 2年，服务器前50">Re:1999 - 2 years, Server Top 50</span></li>
+                            <li><span data-en="Sword of Convallaria - 2 years" data-zh="铃兰之剑 - 2年">Sword of Convallaria - 2 years</span></li>
+                            <li><span data-en="Girls' Frontline 2 - 1 year, created Unity prototypes based on in-game mini-games" data-zh="少女前线2 - 1年，基于游戏内小游戏制作Unity原型">Girls' Frontline 2 - 1 year, created Unity prototypes based on in-game mini-games</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download Links -->
+            <div class="download-section">
+                <button onclick="openPDFViewer('documents/Gaming_Experience_CN.pdf')" class="view-pdf-btn">
+                    <span data-en="📄 Download Gaming List (Chinese)" data-zh="📄 下载游戏列表（中文）">📄 Download Gaming List (Chinese)</span>
+                </button>
+                <button onclick="openPDFViewer('documents/Gaming_Experience_EN.pdf')" class="view-pdf-btn">
+                    <span data-en="📄 Download Gaming List (English)" data-zh="📄 下载游戏列表（英文）">📄 Download Gaming List (English)</span>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <!-- ==================== STEAM GAMES SECTION ==================== -->
+    <section id="steam" class="section">
+        <h2 class="section-title">Steam Profile</h2>
+        <div class="section-content" style="max-width: 1400px;">
+            <div id="steam-profile-container"></div>
+            <div class="steam-tabs">
+                <button class="steam-tab active" data-tab="most-played" onclick="switchSteamTab('most-played')">Most Played</button>
+                <button class="steam-tab" data-tab="recent" onclick="switchSteamTab('recent')">Recently Played</button>
+                <button class="steam-tab" data-tab="name" onclick="switchSteamTab('name')">Sort by Name</button>
+            </div>
+            <div class="steam-games-container">
+                <div class="steam-games-grid" id="steam-games-grid">
+                    <div class="steam-loading">Loading...</div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- ==================== CONTACT SECTION ==================== -->
     <section id="contact" class="section">
@@ -2459,6 +2652,31 @@
 
     // 页面加载时初始化语言
     document.addEventListener('DOMContentLoaded', initializeLanguage);
+
+    // ==================== Gaming Experience折叠功能 ====================
+    function toggleCategory(categoryId) {
+        console.log('toggleCategory called with:', categoryId);
+        const content = document.getElementById(categoryId + '-content');
+        const icon = document.getElementById(categoryId + '-icon');
+
+        console.log('Content element:', content);
+        console.log('Icon element:', icon);
+
+        if (!content || !icon) {
+            console.error('Elements not found for category:', categoryId);
+            return;
+        }
+
+        if (content.classList.contains('expanded')) {
+            content.classList.remove('expanded');
+            icon.classList.remove('rotated');
+            console.log('Collapsed:', categoryId);
+        } else {
+            content.classList.add('expanded');
+            icon.classList.add('rotated');
+            console.log('Expanded:', categoryId);
+        }
+    }
 </script>
 
 </body>
