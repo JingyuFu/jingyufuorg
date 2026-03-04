@@ -1870,9 +1870,79 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+<!--        </div>-->
+<!--    </section>-->
 
+    <!-- ========== Game Analysis 子部分 ========== -->
+    <h3 id="analysis" class="subsection-title" data-en="Game Analysis & Level Breakdown" data-zh="游戏分析与关卡拆解">Game Analysis & Level Breakdown</h3>
+    <div class="projects-carousel">
+        <div class="carousel-main">
+            <div class="carousel-arrow prev" onclick="changeAnalysisSlide(-1)">‹</div>
+
+            <div class="carousel-slides" id="analysis-slides">
+                <!-- 分析 1 -->
+                <div class="carousel-slide active">
+                    <div class="project-main-image" onclick="openPDFViewer('documents/GameNarrativeAnalysis.pdf')" style="cursor: pointer;">
+                        <img src="images/analysis/slides.png" alt="Analysis 1">
+                    </div>
+                    <div class="project-main-info">
+                        <h3>Application of Psychological Principles in Game Design</h3>
+                        <p>Wrote a paper on enhancing player engagement in open-world games through nonlinear storytelling, and deepened the understanding of narrative techniques in game design.</p>
+                        <p><i>Advisor: Associate Prof. Geoff Kaufman, Carnegie Mellon University</i></p>
+                        <button onclick="openPDFViewer('documents/GameNarrativeAnalysis.pdf')" class="view-pdf-btn">
+                            📄 View PDF Analysis
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 分析 2 -->
+                <div class="carousel-slide">
+                    <div class="project-main-image" onclick="openPDFViewer('documents/GameLoopAnalysis.pdf')" style="cursor: pointer;">
+                        <img src="images/analysis/gameloops.png" alt="Analysis 2">
+                    </div>
+                    <div class="project-main-info">
+                        <h3>Game Loops Analysis: <i>Hunt: Showdown</i></h3>
+                        <p>Analysing 3 basic game loops in <i>Hunt: Showdown</i>, click to view online</p>
+                        <button onclick="openPDFViewer('documents/GameLoopAnalysis.pdf')" class="view-pdf-btn">
+                            📄 View PDF Analysis
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 分析 3 -->
+                <div class="carousel-slide">
+                    <div class="project-main-image" onclick="openPDFViewer('documents/#')" style="cursor: pointer;">
+                        <img src="images/analysis/ind.jpg" alt="Analysis 3">
+                    </div>
+                    <div class="project-main-info">
+                        <h3>Level Breakdown: <i>Indiana Jones and the Great Circle</i> --Vatican</h3>
+                        <p>Semi-Open Metroidvania-Style Level Design Breakdown in <i>Indiana Jones and the Great Circle</i></p>
+                        <button onclick="openPDFViewer('documents/#')" class="view-pdf-btn">
+                            📄 View PDF Analysis
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-arrow next" onclick="changeAnalysisSlide(1)">›</div>
+        </div>
+
+        <div class="carousel-thumbnails">
+            <div class="thumbnails-container" id="analysis-thumbnails">
+                <div class="thumbnail-item active" onclick="goToAnalysisSlide(0)">
+                    <img src="images/analysis/ga.png" alt="Analysis 1">
+                </div>
+                <div class="thumbnail-item" onclick="goToAnalysisSlide(1)">
+                    <img src="images/analysis/hunt.jpeg" alt="Analysis 2">
+                </div>
+                <div class="thumbnail-item" onclick="goToAnalysisSlide(2)">
+                    <img src="images/analysis/ventican.jpg" alt="Analysis 3">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </section>
 
     <!-- ==================== SKILLS SECTION ==================== -->    <!-- ==================== SKILLS SECTION ==================== -->
     <section id="skills" class="section">
