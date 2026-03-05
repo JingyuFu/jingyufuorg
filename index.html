@@ -1282,6 +1282,116 @@
             text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
 
+        /* ==================== 语言切换提示动画 ==================== */
+        .language-hint {
+            position: absolute;
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: white;
+            padding: 12px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(94, 179, 214, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 1000;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .language-hint.show {
+            opacity: 1;
+            visibility: visible;
+            animation: hintBounce 0.6s ease-out;
+        }
+
+        @keyframes hintBounce {
+            0% {
+                transform: translateX(-50%) translateY(10px);
+                opacity: 0;
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+            100% {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .hint-arrow {
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            color: var(--color-secondary);
+            animation: arrowPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes arrowPulse {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(3px);
+            }
+        }
+
+        .hint-text {
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .hint-subtext {
+            display: block;
+            font-size: 0.75rem;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+
+        /* 脉冲光圈动画 */
+        .language-toggle.pulse::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            opacity: 0;
+            animation: pulseRing 2s ease-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes pulseRing {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.4;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .language-hint {
+                font-size: 0.8rem;
+                padding: 10px 15px;
+                top: -70px;
+            }
+        }
+
 
         /* ==================== GAMING EXPERIENCE STYLES ==================== */
         .gaming-stats {
@@ -1488,6 +1598,15 @@
             <span class="language-label"></span>
             <span class="language-icon zh"></span>
             <div class="language-slider"></div>
+        </div>
+
+        <!-- 语言切换提示 -->
+        <div class="language-hint" id="language-hint">
+            <div class="hint-arrow">↑</div>
+            <div class="hint-text">
+                <span data-en="Switch Language" data-zh="切换语言">Switch Language</span>
+                <span class="hint-subtext">EN / 中文</span>
+            </div>
         </div>
     </div>
 </aside>
@@ -1870,78 +1989,78 @@
                     </div>
                 </div>
             </div>
-<!--        </div>-->
-<!--    </section>-->
+            <!--        </div>-->
+            <!--    </section>-->
 
-    <!-- ========== Game Analysis 子部分 ========== -->
-    <h3 id="analysis" class="subsection-title" data-en="Game Analysis & Level Breakdown" data-zh="游戏分析与关卡拆解">Game Analysis & Level Breakdown</h3>
-    <div class="projects-carousel">
-        <div class="carousel-main">
-            <div class="carousel-arrow prev" onclick="changeAnalysisSlide(-1)">‹</div>
+            <!-- ========== Game Analysis 子部分 ========== -->
+            <h3 id="analysis" class="subsection-title" data-en="Game Analysis & Level Breakdown" data-zh="游戏分析与关卡拆解">Game Analysis & Level Breakdown</h3>
+            <div class="projects-carousel">
+                <div class="carousel-main">
+                    <div class="carousel-arrow prev" onclick="changeAnalysisSlide(-1)">‹</div>
 
-            <div class="carousel-slides" id="analysis-slides">
-                <!-- 分析 1 -->
-                <div class="carousel-slide active">
-                    <div class="project-main-image" onclick="openPDFViewer('documents/GameNarrativeAnalysis.pdf')" style="cursor: pointer;">
-                        <img src="images/analysis/slides.png" alt="Analysis 1">
+                    <div class="carousel-slides" id="analysis-slides">
+                        <!-- 分析 1 -->
+                        <div class="carousel-slide active">
+                            <div class="project-main-image" onclick="openPDFViewer('documents/GameNarrativeAnalysis.pdf')" style="cursor: pointer;">
+                                <img src="images/analysis/slides.png" alt="Analysis 1">
+                            </div>
+                            <div class="project-main-info">
+                                <h3>Application of Psychological Principles in Game Design</h3>
+                                <p>Wrote a paper on enhancing player engagement in open-world games through nonlinear storytelling, and deepened the understanding of narrative techniques in game design.</p>
+                                <p><i>Advisor: Associate Prof. Geoff Kaufman, Carnegie Mellon University</i></p>
+                                <button onclick="openPDFViewer('documents/GameNarrativeAnalysis.pdf')" class="view-pdf-btn">
+                                    📄 View PDF Analysis
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 分析 2 -->
+                        <div class="carousel-slide">
+                            <div class="project-main-image" onclick="openPDFViewer('documents/GameLoopAnalysis.pdf')" style="cursor: pointer;">
+                                <img src="images/analysis/gameloops.png" alt="Analysis 2">
+                            </div>
+                            <div class="project-main-info">
+                                <h3>Game Loops Analysis: <i>Hunt: Showdown</i></h3>
+                                <p>Analysing 3 basic game loops in <i>Hunt: Showdown</i>, click to view online</p>
+                                <button onclick="openPDFViewer('documents/GameLoopAnalysis.pdf')" class="view-pdf-btn">
+                                    📄 View PDF Analysis
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 分析 3 -->
+                        <div class="carousel-slide">
+                            <div class="project-main-image" onclick="openPDFViewer('documents/#')" style="cursor: pointer;">
+                                <img src="images/analysis/ind.jpg" alt="Analysis 3">
+                            </div>
+                            <div class="project-main-info">
+                                <h3>Level Breakdown: <i>Indiana Jones and the Great Circle</i> --Vatican</h3>
+                                <p>Semi-Open Metroidvania-Style Level Design Breakdown in <i>Indiana Jones and the Great Circle</i></p>
+                                <button onclick="openPDFViewer('documents/#')" class="view-pdf-btn">
+                                    📄 View PDF Analysis
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="project-main-info">
-                        <h3>Application of Psychological Principles in Game Design</h3>
-                        <p>Wrote a paper on enhancing player engagement in open-world games through nonlinear storytelling, and deepened the understanding of narrative techniques in game design.</p>
-                        <p><i>Advisor: Associate Prof. Geoff Kaufman, Carnegie Mellon University</i></p>
-                        <button onclick="openPDFViewer('documents/GameNarrativeAnalysis.pdf')" class="view-pdf-btn">
-                            📄 View PDF Analysis
-                        </button>
-                    </div>
+
+                    <div class="carousel-arrow next" onclick="changeAnalysisSlide(1)">›</div>
                 </div>
 
-                <!-- 分析 2 -->
-                <div class="carousel-slide">
-                    <div class="project-main-image" onclick="openPDFViewer('documents/GameLoopAnalysis.pdf')" style="cursor: pointer;">
-                        <img src="images/analysis/gameloops.png" alt="Analysis 2">
-                    </div>
-                    <div class="project-main-info">
-                        <h3>Game Loops Analysis: <i>Hunt: Showdown</i></h3>
-                        <p>Analysing 3 basic game loops in <i>Hunt: Showdown</i>, click to view online</p>
-                        <button onclick="openPDFViewer('documents/GameLoopAnalysis.pdf')" class="view-pdf-btn">
-                            📄 View PDF Analysis
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 分析 3 -->
-                <div class="carousel-slide">
-                    <div class="project-main-image" onclick="openPDFViewer('documents/#')" style="cursor: pointer;">
-                        <img src="images/analysis/ind.jpg" alt="Analysis 3">
-                    </div>
-                    <div class="project-main-info">
-                        <h3>Level Breakdown: <i>Indiana Jones and the Great Circle</i> --Vatican</h3>
-                        <p>Semi-Open Metroidvania-Style Level Design Breakdown in <i>Indiana Jones and the Great Circle</i></p>
-                        <button onclick="openPDFViewer('documents/#')" class="view-pdf-btn">
-                            📄 View PDF Analysis
-                        </button>
+                <div class="carousel-thumbnails">
+                    <div class="thumbnails-container" id="analysis-thumbnails">
+                        <div class="thumbnail-item active" onclick="goToAnalysisSlide(0)">
+                            <img src="images/analysis/ga.png" alt="Analysis 1">
+                        </div>
+                        <div class="thumbnail-item" onclick="goToAnalysisSlide(1)">
+                            <img src="images/analysis/hunt.jpeg" alt="Analysis 2">
+                        </div>
+                        <div class="thumbnail-item" onclick="goToAnalysisSlide(2)">
+                            <img src="images/analysis/ventican.jpg" alt="Analysis 3">
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="carousel-arrow next" onclick="changeAnalysisSlide(1)">›</div>
         </div>
-
-        <div class="carousel-thumbnails">
-            <div class="thumbnails-container" id="analysis-thumbnails">
-                <div class="thumbnail-item active" onclick="goToAnalysisSlide(0)">
-                    <img src="images/analysis/ga.png" alt="Analysis 1">
-                </div>
-                <div class="thumbnail-item" onclick="goToAnalysisSlide(1)">
-                    <img src="images/analysis/hunt.jpeg" alt="Analysis 2">
-                </div>
-                <div class="thumbnail-item" onclick="goToAnalysisSlide(2)">
-                    <img src="images/analysis/ventican.jpg" alt="Analysis 3">
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
     </section>
 
     <!-- ==================== SKILLS SECTION ==================== -->    <!-- ==================== SKILLS SECTION ==================== -->
@@ -2033,7 +2152,7 @@
             <!-- Stats Overview -->
             <div class="gaming-stats">
                 <div class="stat-card">
-                    <h4 data-en="2,000+" data-zh="2000+">2,000+</h4>
+                    <h4 data-en="1,500+" data-zh="1500+">1,500+</h4>
                     <p data-en="Games Played" data-zh="游戏数量">Games Played</p>
                 </div>
                 <div class="stat-card">
@@ -2721,6 +2840,52 @@
 
     // 页面加载时初始化语言
     document.addEventListener('DOMContentLoaded', initializeLanguage);
+
+    // ==================== 语言切换提示功能 ====================
+    function showLanguageHint() {
+        // 检查是否已经显示过提示（使用localStorage）
+        const hasSeenHint = localStorage.getItem('language-hint-seen');
+
+        if (hasSeenHint) {
+            console.log('Language hint already shown before');
+            return;
+        }
+
+        const languageToggle = document.querySelector('.language-toggle');
+        const languageHint = document.getElementById('language-hint');
+
+        if (!languageToggle || !languageHint) {
+            console.error('Language toggle or hint element not found');
+            return;
+        }
+
+        // 2秒后显示提示
+        setTimeout(() => {
+            console.log('Showing language hint');
+
+            // 添加脉冲动画
+            languageToggle.classList.add('pulse');
+
+            // 显示提示文字
+            languageHint.classList.add('show');
+
+            // 5秒后隐藏提示
+            setTimeout(() => {
+                console.log('Hiding language hint');
+
+                // 移除动画
+                languageToggle.classList.remove('pulse');
+                languageHint.classList.remove('show');
+
+                // 标记已显示过
+                localStorage.setItem('language-hint-seen', 'true');
+            }, 5000);
+        }, 2000);
+    }
+
+    // 页面加载时显示语言提示
+    document.addEventListener('DOMContentLoaded', showLanguageHint);
+
 
     // ==================== Gaming Experience折叠功能 ====================
     function toggleCategory(categoryId) {
